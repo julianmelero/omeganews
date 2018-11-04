@@ -1,8 +1,9 @@
+<link rel="stylesheet" href="css/estilos.css">
+
 <?php
 /*
 Copyright (C) 2018  Julián Melero Hidalgo, Araceli Garrido García, Alfredo Oleagagoitia Álvarez
 */
-
 
 // Vamos a ver si existe una sesión con el usuario, en caso contratio lo mandamos a autenticar
 

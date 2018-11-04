@@ -9,6 +9,13 @@
  <!-- Aquí no llammos al header ya que si no hay redundancia con la llamada a la autenticación --> 
   </header>
 <body>
-    
+
+<form action="autenticacion.php" method="post">
+    <label for="usuario">Usuario</label>
+    <input type="text" maxlength='30' required placeholder="Usuario..." autofocus name="usuario">
+    <label for="pwd">Contraseña</label>
+    <input type="password" required placeholder="Escriba su contraseña..." name="contraseña">
+    <input type="submit" value="¡Entrar!">
+</form>
 </body>
 </html>

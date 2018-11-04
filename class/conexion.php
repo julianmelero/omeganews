@@ -1,8 +1,9 @@
+
+<?php
 /*
 Copyright (C) 2018  Julián Melero Hidalgo, Araceli Garrido García, Alfredo Oleagagoitia Álvarez
 */
 
-<?php
 require "./credenciales.php";
 
 class conexion{
