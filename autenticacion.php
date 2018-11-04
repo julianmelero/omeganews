@@ -2,11 +2,11 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>OMEGA NEWS - Autenticación</title>
 </head>
 <header>
- <!-- Aquí no llammos al header ya que si no hay redundancia con la llamada a la autenticación --> 
+ <!-- Aquí no llammos al header ya que si no hay redundancia con la llamada a la autenticación -->
   </header>
 <body>
 
@@ -17,5 +17,6 @@
     <input type="password" required placeholder="Escriba su contraseña..." name="contraseña">
     <input type="submit" value="¡Entrar!">
 </form>
+Si quieres crear noticias con nosotros, <a href="alta_usuario.php"> ¡Regístrate!</a>
 </body>
 </html>
