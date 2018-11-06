@@ -81,8 +81,8 @@ class usuario{
         VALUES('$usuario','$nombre','$pass','$ape1','$ape2',$id_periodista,'$email','$telefono');";        
         if($con->query($query,array())){
           // Creamos las sessiones y vamos a index
-          $this->crear_sesion($usuario);
-          echo "Vamos a index";
+          $this->crear_sesion($usuario);                        
+          header("Location: ./index.php");
         }
         
 

@@ -11,4 +11,7 @@ if(! isset($_SESSION["usuario"])){
   header('Location: autenticacion.php');
 }
 
+
 ?>
+
+¡Hola <?php echo $_SESSION["usuario"] ?>! <a href="cerrar_sesion.php">Cerrar sesión</a>
