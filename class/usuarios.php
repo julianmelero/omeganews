@@ -13,6 +13,24 @@ class usuario{
 
     function autenticacion($usuario,$pwd){
 
+      // Convertimos la contraseña a SHA1 con ek hash
+      $hash = "somosomega";
+      $pass = $hash . $pwd;
+      $pass = hash("SHA1",$pass);      
+      $con = new conexion();
+      $sql = "SELECT usuario FROM usuarios WHERE usuario = ? and pass=?;";
+      $resultado = $con->query($sql,array($usuario,$pass));
+      if($resultado[0]->rowCount() == 1){
+        // Credenciales correctas
+      }
+      else{
+        echo "Usuario o contraseña incorrectos.";
+      }
+      
+      
+      
+
+
     }
 
     function existe($usuario){
@@ -58,9 +76,13 @@ class usuario{
 
         $con = new conexion();
         $query = "INSERT INTO usuarios (usuario,nombre,pass,ape1,ape2,id_tipo_usuario,email,telefono)
-        VALUES('$usuario','$nombre','$pass','$ape1','$ape2',$id_periodista,'$email','$telefono');";
-        echo $query;
-        $con->query($query,array());
+        VALUES('$usuario','$nombre','$pass','$ape1','$ape2',$id_periodista,'$email','$telefono');";        
+        if($con->query($query,array())){
+          // Creamos las sessiones y vamos a index
+          echo "Vamos a index";
+        }
+        
+
         
       }
 

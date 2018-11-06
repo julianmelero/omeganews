@@ -32,7 +32,7 @@ public $mysql;
         $id = $this->mysql->lastInsertId();
         $resultados[1]= $id;
       }
-      $resultados[0]= $consulta;
+      $resultados[0]= $consulta;      
       return $resultados;
     }catch (PDOException $e){
       return 1;

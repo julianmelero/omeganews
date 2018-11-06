@@ -20,14 +20,14 @@ if(isset($_POST["enviar"])){
     <meta charset="utf-8">
     <title>OMEGA NEWS - Nuevo Usuario</title>
   </head>
-  <body>
+  <body>  
     <form class="" action="" method="post">
       <label for="nombre">Usuario*</label>
       <input type="text" required name="usuario" value='<?php if(isset($_POST["usuario"])){ echo $_POST["usuario"]; } ?>'>
       <label for="pass">Contrasenya*</label>
       <input type="password" required name="pass" >
       <label for="pass2">Repita Contrasenya*</label>
-      <input type="password2" required name="pass2" >
+      <input type="password" required name="pass2" >
       <label for="nombre">Nombre*</label>
       <input type="text" required name="nombre" value='<?php  if(isset($_POST["nombre"])){ echo $_POST["nombre"]; } ?>' >
       <label for="apellido1">Primer Apellido*</label>
