@@ -18,14 +18,20 @@ class usuario{
     function existe($usuario){
 
     }
-    function set_usuario($usuario,$nombre, $pass, $ape1, $ape2,$email, $telefono){      
+    function set_usuario($usuario,$nombre, $pass,$pass2, $ape1, $ape2,$email, $telefono){      
       $tipos = new tipo_usuario();
       $errores = 0;
       // Comprobamos los parámetros
 
       if (is_null($usuario) or is_null($pass) or is_null($ape1) or is_null($ape2) or is_null($email) or is_null($telefono) ) {
-        die("Lo sentimos :( No se pudo dar de alta, contacte con Omega News. <a href='index.php'>Volver</a> ");
-      }      
+        $errores += 1;
+        $mensaje= "Algunos datos están incompletos o son incorrectos.";
+      }
+      
+      if($pass != $pass2){
+        $errores += 1;
+        $mensaje= "Las contraseñas no coinciden.";
+      }
 
       // Cuando se da de alta siempre será periodista
       $datos = $tipos->get_id_periodista();
@@ -34,12 +40,13 @@ class usuario{
       }
       if ( !isset($id_periodista) or is_null($id_periodista)) {
         $errores +=1;
+        $mensaje= "Lo sentimos :( ha habido un error inesperado.";
       }
 
 
 
       if ($errores>0) {
-        die("Lo sentimos :( No se pudo dar de alta, contacte con Omega News. <a href='index.php'>Volver</a>");
+        echo($mensaje);
       }
       else{
         // Insertamos en la BD
