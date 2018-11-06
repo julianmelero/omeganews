@@ -24,9 +24,9 @@ if(isset($_POST["enviar"])){
     <form class="" action="" method="post">
       <label for="nombre">Usuario*</label>
       <input type="text" required name="usuario" value='<?php if(isset($_POST["usuario"])){ echo $_POST["usuario"]; } ?>'>
-      <label for="pass">Contrasenya*</label>
+      <label for="pass">Contraseña*</label>
       <input type="password" required name="pass" >
-      <label for="pass2">Repita Contrasenya*</label>
+      <label for="pass2">Repita Contraseña*</label>
       <input type="password" required name="pass2" >
       <label for="nombre">Nombre*</label>
       <input type="text" required name="nombre" value='<?php  if(isset($_POST["nombre"])){ echo $_POST["nombre"]; } ?>' >
