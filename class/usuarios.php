@@ -22,6 +22,8 @@ class usuario{
       $resultado = $con->query($sql,array($usuario,$pass));
       if($resultado[0]->rowCount() == 1){
         // Credenciales correctas
+        $this->crear_sesion($usuario);                
+        header("Location: ./index.php");
       }
       else{
         echo "Usuario o contraseña incorrectos.";
@@ -79,6 +81,7 @@ class usuario{
         VALUES('$usuario','$nombre','$pass','$ape1','$ape2',$id_periodista,'$email','$telefono');";        
         if($con->query($query,array())){
           // Creamos las sessiones y vamos a index
+          $this->crear_sesion($usuario);
           echo "Vamos a index";
         }
         
@@ -86,6 +89,11 @@ class usuario{
         
       }
 
+    }
+
+    function crear_sesion($usuario){
+      session_start();
+      $_SESSION["usuario"] = $usuario;
     }
 
 
