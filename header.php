@@ -5,6 +5,7 @@ Copyright (C) 2018  Julián Melero Hidalgo, Araceli Garrido García, Alfredo Ole
 
 // Vamos a ver si existe una sesión con el usuario para ver si tiene que cerrar sesión
 session_start();
+require_once "./class/usuarios.php";
 
 ?>
 
@@ -20,8 +21,13 @@ session_start();
                     <li><a href="autenticacion.php">Login</a></li>
                     <li><a href="nosotros.php">Nosotros</a></li>
                     <?php } ?>
-                    <?php if(isset($_SESSION["usuario"])){  ?>                    
+                    <?php if(isset($_SESSION["usuario"])){
+                      $usuario = new usuario();
+                      $tipo = $usuario->tipo_usuario($_SESSION["usuario"]);
+                      if ($tipo == "Administrador"){                      
+                      ?>                    
                         <li><a href="miembros.php">Miembros</a></li>
+                      <?php } ?>
                         <li><a href="publicar_noticias.php">Publicar noticia</a></li>                        
                         <li><a href="#"><?php echo $_SESSION["usuario"]; ?></a></li>
                         <li><a href="cerrar_sesion.php">Cerrar Sesión</a></li>

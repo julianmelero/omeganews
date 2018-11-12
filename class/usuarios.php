@@ -43,12 +43,13 @@ class usuario{
       $errores = 0;
       // Comprobamos los parámetros
 
-      if (is_null($usuario) or is_null($pass) or is_null($ape1) or is_null($ape2) or is_null($email) or is_null($telefono) ) {
+      if (is_null($usuario) or is_null($pass) or is_null($pass2) or is_null($ape1) or is_null($ape2) or is_null($email) or is_null($telefono) ) {
         $errores += 1;
         $mensaje= "Algunos datos están incompletos o son incorrectos.";
       }
       
-      if($pass != $pass2){
+      if($pass <> $pass2){
+        echo $pass. "cont 2 ". $pass2;
         $errores += 1;
         $mensaje= "Las contraseñas no coinciden.";
       }
@@ -89,6 +90,21 @@ class usuario{
         
       }
 
+    }
+
+    function tipo_usuario($usuario){
+      $con = new conexion();
+      $query = "SELECT id_tipo_usuario FROM usuarios WHERE usuario = ?;";
+      $resultado = $con->query($query,array($_SESSION["usuario"]));
+      while($datos = $resultado[0]->fetch()){
+        $id_tipo_usuario = $datos["id_tipo_usuario"];
+      }
+
+      $query = "SELECT nombre_tipo FROM tipos_usuario WHERE id=?;";
+      $resultado = $con->query($query,array($id_tipo_usuario));
+      while($datos = $resultado[0]->fetch()){
+         return $nombre_tipo_usuario = $datos["nombre_tipo"];
+      }
     }
 
     function crear_sesion($usuario){

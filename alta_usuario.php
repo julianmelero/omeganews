@@ -9,7 +9,7 @@ $usuario = new usuario();
 // Si se ha enviado el formulario lo damos de alta
 
 if(isset($_POST["enviar"])){
-  $usuario->set_usuario($_POST["usuario"],$_POST["pass"],$_POST["pass2"],$_POST["nombre"],$_POST["apellido1"],$_POST["apellido2"],$_POST["email"],$_POST["telefono"]);
+  $usuario->set_usuario($_POST["usuario"],$_POST["nombre"],$_POST["pass"],$_POST["pass2"],$_POST["apellido1"],$_POST["apellido2"],$_POST["email"],$_POST["telefono"]);
 }
 
 ?>
