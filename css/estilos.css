@@ -1,0 +1,132 @@
+* {
+	margin: 0;
+	padding: 0;
+	font-family: 'Lato', sans-serif;
+}
+html, body {
+	width: 100%;
+	height: 100%;
+}
+
+/***************************HEADER*********************************/
+  .nav-header{
+        overflow: hidden;
+        background:white;
+        padding: 1em 0 0 ;
+      
+      }
+
+      .logo{
+        max-width: 60px;
+        display: block;
+        float: left;
+        margin: 0 0 1em 1em;
+       
+      }
+ 
+      .logo img{
+        display: block;
+        width:150%;
+      }
+    
+.center-contents{
+     width:100%;
+} 
+      .menu-nav{
+        color: #fff;
+        float:right;
+      }
+ 
+      .menu-nav ul, .menu-nav li{
+        list-style:none;
+        margin:0;
+        padding: 0;
+        float: left;
+          
+      }
+ 
+      .menu-nav a{
+        color: black;
+        font-family: 'Lato';
+          
+        width: 100%;
+        height: auto;
+        display: block;
+        padding: 0.75em 1em;
+        text-decoration: none;
+        cursor: pointer;
+      }
+
+         .menu-nav a:hover {
+         color: #77b74e;
+        }
+
+/********************BODY***********************************/
+
+body{
+    background-image:url(../sources/img/Fondo.jpg);
+    width: 100%;
+	height: 100%;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-size: cover;
+	/*color: white;*/
+   
+    
+}
+
+.registro{
+    color: black;
+    font-family: 'Lato';
+    text-align: center;
+    
+    
+}
+/***Miembros equipo*****/
+
+.miembros {
+	display: inline-block;
+	width: 33%;
+	text-align: center; 
+}
+	.miembros img {
+		border: 4px solid white;
+        margin-top: 50px;
+	}
+	.miembros p {
+		width: 50%;
+		margin: auto;
+        margin-bottom: 50px;
+        
+	}
+
+	.miembros h3 {
+		color: black;
+		margin: 20px 0 14px 0;
+        color: #77b74e;
+	}
+/***Nosotros*****/
+
+.nosotros {
+	display: inline-block;
+	width: 100%;
+	text-align: center; 
+}
+	.nosotros img {
+		border: 2px solid white;
+        margin-top: 50px;
+	}
+	.nosotros p {
+		width: 70%;
+		margin: auto;
+        margin-bottom: 50px;
+        
+	}
+
+	.nosotros h3 {
+		color: black;
+		margin: 20px 0 14px 0;
+        color: #77b74e;
+	}
+
+/*******************FOOTER*************************************/
