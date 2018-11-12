@@ -21,10 +21,9 @@ if(isset($_POST["entrar"])){
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>OMEGA NEWS - Autenticación</title>
+    <?php require_once "head.php"; ?>  
 </head>
-<header>
- <!-- Aquí no llammos al header ya que si no hay redundancia con la llamada a la autenticación -->
-  </header>
+ <?php require_once "header.php"; ?>
 <body>
 
 <form action="autenticacion.php" method="post">

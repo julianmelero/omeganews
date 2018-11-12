@@ -69,8 +69,7 @@ body{
 	height: 100%;
 	background-repeat: no-repeat;
 	background-attachment: fixed;
-	background-size: cover;
-	/*color: white;*/
+    background-size: cover;    	
    
     
 }

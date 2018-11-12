@@ -10,7 +10,7 @@ session_start();
 
  <header class="nav-header">
        <div class="center-contents">
-          <a class="logo" href="index.php" title=""><img src="img/logo.jpg" alt=""></a>
+          <a class="logo" href="index.php" title=""><img src="./sources/img/OmegaNews.jpg" alt=""></a>
          <div class="center-contents">
           <nav class="menu-nav">
             <ul>                  
@@ -20,9 +20,10 @@ session_start();
                     <li><a href="autenticacion.php">Login</a></li>
                     <li><a href="nosotros.php">Nosotros</a></li>
                     <?php } ?>
-                    <?php if(isset($_SESSION["usuario"])){  ?>
+                    <?php if(isset($_SESSION["usuario"])){  ?>                    
                         <li><a href="miembros.php">Miembros</a></li>
                         <li><a href="publicar_noticias.php">Publicar noticia</a></li>                        
+                        <li><a href="#"><?php echo $_SESSION["usuario"]; ?></a></li>
                         <li><a href="cerrar_sesion.php">Cerrar Sesión</a></li>
                     <?php } ?>
             </ul>

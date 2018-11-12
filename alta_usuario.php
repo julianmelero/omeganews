@@ -19,7 +19,9 @@ if(isset($_POST["enviar"])){
   <head>
     <meta charset="utf-8">
     <title>OMEGA NEWS - Nuevo Usuario</title>
+    <?php require_once "head.php"; ?>
   </head>
+  <?php require_once "header.php"; ?>
   <body>  
     <form class="" action="" method="post">
       <label for="nombre">Usuario*</label>
