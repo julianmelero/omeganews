@@ -1,7 +1,14 @@
+@font-face{
+  font-family: 'Brandon_bld';
+  src: url('../sources/fonts/Brandon_bld.otf'); 
+}
+
 * {
 	margin: 0;
 	padding: 0;
-	font-family: 'Lato', sans-serif;
+  /*font-family: 'Brandon_bld', 'Lato', sans-serif ;*/
+ 
+ font-family: 'Brandon_bld'; 
 }
 html, body {
 	width: 100%;
