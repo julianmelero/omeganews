@@ -12,9 +12,8 @@ Copyright (C) 2018  Julián Melero Hidalgo, Araceli Garrido García, Alfredo Ole
     <title>OMEGA NEWS</title>
     <?php require_once "head.php"; ?>  
   </head>
-  <?php require_once "header.php"; ?>
-  
-  <body>
+    <body>
+    <?php require_once "header.php"; ?>
 
   </body>
 </html>

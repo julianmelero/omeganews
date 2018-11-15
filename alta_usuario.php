@@ -21,8 +21,9 @@ if(isset($_POST["enviar"])){
     <title>OMEGA NEWS - Nuevo Usuario</title>
     <?php require_once "head.php"; ?>
   </head>
-  <?php require_once "header.php"; ?>
+  
   <body>  
+  <?php require_once "header.php"; ?>
     <form class="" action="" method="post">
       <label for="nombre">Usuario*</label>
       <input type="text" required name="usuario" value='<?php if(isset($_POST["usuario"])){ echo $_POST["usuario"]; } ?>'>
