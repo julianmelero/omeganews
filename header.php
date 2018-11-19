@@ -7,6 +7,7 @@ Copyright (C) 2018  Julián Melero Hidalgo, Araceli Garrido García, Alfredo Ole
 session_start();
 require_once "./class/usuarios.php";
 
+
 ?>
 
  <header class="nav-header">

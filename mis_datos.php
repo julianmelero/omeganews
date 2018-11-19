@@ -13,6 +13,11 @@
 
 
 <?php
+if(!isset($_SESSION["usuario"])){  
+    header("Location: index.php");
+  }
+
+
 if(isset($_POST["enviar"])){
 $usuario->actualizar_usuario($_POST["id"],$_POST["usuario"],$_POST["nombre"],$_POST["apellido1"],$_POST["apellido2"],$_POST["email"],$_POST["telefono"]);
 }

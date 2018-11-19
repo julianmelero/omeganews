@@ -22,6 +22,11 @@ class usuario{
       $sql = "SELECT * FROM usuarios WHERE id=? ;";
       return $con->query($sql,array($id));      
     }
+    function get_usuarios(){      
+      $con = new conexion();
+      $sql = "SELECT * FROM usuarios;";
+      return $con->query($sql,array());      
+    }
 
     function autenticacion($usuario,$pwd){
 
@@ -147,7 +152,7 @@ class usuario{
           echo "Se ha actualizado correctamente";
         }
         else{
-          echo "lo sentimos, ha habido un error al actualizar :(";
+          echo "Lo sentimos, ha habido un error al actualizar :(";
         }
       }
         

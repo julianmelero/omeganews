@@ -14,24 +14,21 @@ Copyright (C) 2018  Julián Melero Hidalgo, Araceli Garrido García, Alfredo Ole
     </head>               
   
   <body>
-	<?php require_once "header.php"; ?>   
+	<?php require_once "header.php"; 
+	if(!isset($_SESSION["usuario"])){  
+    header("Location: index.php");
+  	}
+	require_once "class/usuarios.php";
+	$usuario = new usuario();
+	$datos = $usuario->get_usuarios();
+	while($usuarios = $datos[0]->fetch()){		
+	?>   
     <div class="divProg">
-			<div class="miembros">
-				<img src="img/miembro1.jpg" alt="Fotografía integrante equipo Omega News"  width="50%">
-				<h3>Mercedes Castillo, periodista.</h3>
-				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vitae neque ac ipsum, ac at suspendisse velit non torquent mus sem dis facilisis cursus.</p>
-			</div>
-			<div class="miembros">
-				<img src="img/miembro2.jpg" alt="Fotografía integrante equipoOmega News" width="50%">
-				<h3>Sara Holt, periodista.</h3>
-				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vitae neque ac ipsum, ac at suspendisse velit non torquent mus sem dis facilisis cursus.</p>
-			</div>
-			<div class="miembros">
-				<img src="img/miembro3.jpg" alt="Fotografía integrante equipo Omega News" width="50%">
-				<h3>Pedro Márquez, editor.</h3>
-				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vitae neque ac ipsum, ac at suspendisse velit non torquent mus sem dis facilisis cursus.</p>
-			</div>
+			<div class="miembros">				
+				<h3><?php echo $usuarios["nombre"]." ".$usuarios["ape1"]." ".$usuarios["ape2"];  ?></h3>
+				
+			</div>			
 		</div>
-
+	<?php }?>
   </body>
 </html>
