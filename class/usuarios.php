@@ -7,8 +7,20 @@ require_once "tipos_usuarios.php";
 
 class usuario{
 
-    function get_usuario($id){
+  function get_usuario_id($usuario){    
+      $con = new conexion();
+      $sql = "SELECT * FROM usuarios WHERE usuario=? ;";
+      $datos = $con->query($sql,array($usuario));
+      while($t_usuario = $datos[0]->fetch()){
+        return $t_usuario["id"];
+      }      
+  }
 
+
+    function get_usuario($id){      
+      $con = new conexion();
+      $sql = "SELECT * FROM usuarios WHERE id=? ;";
+      return $con->query($sql,array($id));      
     }
 
     function autenticacion($usuario,$pwd){
@@ -28,17 +40,13 @@ class usuario{
       else{
         echo "Usuario o contraseña incorrectos.";
       }
-      
-      
-      
-
-
     }
 
     function existe($usuario){
       $con = new conexion();
       $sql = "SELECT * FROM usuarios WHERE usuario=? ;";
       $resultado = $con->query($sql,array($usuario));
+      while($t_usuarios = $datos[0]->fetch()){
       if($resultado[0]->rowCount() >= 1){
         return 1;
       }
@@ -46,6 +54,7 @@ class usuario{
         return 0;
       }
     }
+  }
 
 
 

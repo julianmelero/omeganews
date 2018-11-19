@@ -29,7 +29,7 @@ require_once "./class/usuarios.php";
                         <li><a href="miembros.php">Miembros</a></li>
                       <?php } ?>
                         <li><a href="publicar_noticias.php">Publicar noticia</a></li>                        
-                        <li><a href="#"><?php echo $_SESSION["usuario"]; ?></a></li>
+                        <li><a href="mis_datos.php"><?php echo $_SESSION["usuario"]; ?></a></li>
                         <li><a href="cerrar_sesion.php">Cerrar Sesión</a></li>
                     <?php } ?>
             </ul>
