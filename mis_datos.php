@@ -13,6 +13,15 @@
 
 
 <?php
+if(isset($_POST["enviar"])){
+$usuario->actualizar_usuario($_POST["id"],$_POST["usuario"],$_POST["nombre"],$_POST["apellido1"],$_POST["apellido2"],$_POST["email"],$_POST["telefono"]);
+}
+
+
+
+
+
+
 require_once "class/usuarios.php";
 $usuario = new usuario();
 $id =  $usuario->get_usuario_id($_SESSION["usuario"]);
@@ -23,14 +32,18 @@ while($t_usuario = $datos[0]->fetch()){
     $apellido1 = $t_usuario["ape1"];
     $apellido2 = $t_usuario["ape2"];
     $email = $t_usuario["email"];
-    $telefono = $t_usuario["telefono"];
-    
+    $telefono = $t_usuario["telefono"];    
 }
 ?>
 
-
-
-<form name="alta" id="alta" class="" action="" method="post" onsubmit="return comprobar();">
+<h2>¡Hola, <?php echo $_SESSION["usuario"]; ?>!</h2>
+<br>
+<p>
+Aquí puedes modificar tus datos personales.
+</p>
+<br>
+<form name="alta" class="" action="" method="post" onsubmit="return comprobar();">
+        <input type="hidden" name="id" value='<?php echo $id; ?>'>
       <label for="nombre">Usuario*</label>
       <input type="text" required name="usuario" value='<?php echo $usuario; ?>'>      
       <label for="nombre">Nombre*</label>

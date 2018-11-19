@@ -45,9 +45,9 @@ class usuario{
     function existe($usuario){
       $con = new conexion();
       $sql = "SELECT * FROM usuarios WHERE usuario=? ;";
-      $resultado = $con->query($sql,array($usuario));
+      $datos = $con->query($sql,array($usuario));
       while($t_usuarios = $datos[0]->fetch()){
-      if($resultado[0]->rowCount() >= 1){
+      if($datos[0]->rowCount() >= 1){
         return 1;
       }
       else{
@@ -117,23 +117,15 @@ class usuario{
 
 
 
-    function actualizar_usuario($usuario,$nombre, $pass,$pass2, $ape1, $ape2,$email, $telefono){      
-      $tipos = new tipo_usuario();
+    function actualizar_usuario($id,$usuario,$nombre,$ape1, $ape2,$email, $telefono){            
       $errores = 0;
       // Comprobamos los parámetros
 
-      if (is_null($usuario) or is_null($pass) or is_null($pass2) or is_null($ape1) or is_null($ape2) or is_null($email) or is_null($telefono) ) {
+      if (is_null($usuario) or is_null($ape1) or is_null($ape2) or is_null($email) or is_null($telefono) ) {
         $errores += 1;
         $mensaje= "Algunos datos están incompletos o son incorrectos.";
       }
       
-      if($pass <> $pass2){
-        echo $pass. "cont 2 ". $pass2;
-        $errores += 1;
-        $mensaje= "Las contraseñas no coinciden.";
-      }
-
-
 
       if ($errores>0) {
         echo($mensaje);
@@ -141,25 +133,29 @@ class usuario{
       else{
         // Actualizamos en la BD
 
-        // Ciframos la contraseña con un Hash y SHA1
-        $hash = "somosomega";
-        $pass = $hash . $pass;
-        $pass = hash("SHA1",$pass);
-
         $con = new conexion();
-        $query = "INSERT INTO usuarios (usuario,nombre,pass,ape1,ape2,id_tipo_usuario,email,telefono)
-        VALUES('$usuario','$nombre','$pass','$ape1','$ape2',$id_periodista,'$email','$telefono');";        
-        if($con->query($query,array())){
-          // Creamos las sessiones y vamos a index
-          $this->crear_sesion($usuario);                        
-          header("Location: ./index.php");
+        $query = "UPDATE usuarios SET 
+        usuario=?,
+        nombre=?,
+        ape1=?,
+        ape2=?,
+        email=?,
+        telefono=?
+        WHERE id=?";
+        
+        if($con->query($query,array($usuario,$nombre,$ape1,$ape2,$email,$telefono,$id))){
+          echo "Se ha actualizado correctamente";
         }
+        else{
+          echo "lo sentimos, ha habido un error al actualizar :(";
+        }
+      }
         
 
         
       }
 
-    }
+    
 
     function tipo_usuario($usuario){
       $con = new conexion();

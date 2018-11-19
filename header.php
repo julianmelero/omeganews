@@ -15,7 +15,7 @@ require_once "./class/usuarios.php";
          <div class="center-contents">
           <nav class="menu-nav">
             <ul>                  
-                    <li><a href="index.php">Inicio</a></li>
+                    <li><a href="index.php">Noticias</a></li>
                     <?php   if(!isset($_SESSION["usuario"])){  ?>
                     <li><a href="alta_usuario.php">Registro</a></li>
                     <li><a href="autenticacion.php">Login</a></li>
