@@ -24,13 +24,13 @@ if(isset($_POST["enviar"])){
   
   <body>  
   <?php require_once "header.php"; ?>
-    <form class="" action="" method="post">
+    <form name="alta" id="alta" class="" action="" method="post">
       <label for="nombre">Usuario*</label>
       <input type="text" required name="usuario" value='<?php if(isset($_POST["usuario"])){ echo $_POST["usuario"]; } ?>'>
       <label for="pass">Contraseña*</label>
-      <input type="password" required name="pass" >
+      <input type="password" required name="pass" id="pass" >
       <label for="pass2">Repita Contraseña*</label>
-      <input type="password" required name="pass2" >
+      <input type="password" required name="pass2" id="pass2" >
       <label for="nombre">Nombre*</label>
       <input type="text" required name="nombre" value='<?php  if(isset($_POST["nombre"])){ echo $_POST["nombre"]; } ?>' >
       <label for="apellido1">Primer Apellido*</label>
@@ -43,5 +43,19 @@ if(isset($_POST["enviar"])){
       <input type="text" required name="telefono" value='<?php if(isset($_POST["telefono"])){ echo $_POST["telefono"]; } ?>'>
       <input type="submit" name='enviar' value="Registrarme">
     </form>
+    <script>
+      $("#alta").submit(function(e){
+        e.preventDefault();
+        var pass1 = $('#pass').val();
+        var pass2 = $('#pass2').val();
+        if (pass1!=pass2) {
+          alert('Las contraseñas no coinciden');
+        }
+        else{
+          document.getElementById("alta").submit();
+        }        
+      });      
+    </script>
+
   </body>
 </html>
