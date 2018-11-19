@@ -36,7 +36,15 @@ class usuario{
     }
 
     function existe($usuario){
-
+      $con = new conexion();
+      $sql = "SELECT * FROM usuarios WHERE usuario=? ;";
+      $resultado = $con->query($sql,array($usuario));
+      if($resultado[0]->rowCount() >= 1){
+        return 1;
+      }
+      else{
+        return 0;
+      }
     }
 
 
@@ -50,7 +58,11 @@ class usuario{
         $errores += 1;
         $mensaje= "Algunos datos están incompletos o son incorrectos.";
       }
-      
+      $existe = $this->existe($usuario);
+      if ($existe==1) {
+        $errores += 1;
+        $mensaje= "El usuario ya existe";
+      }
       if($pass <> $pass2){        
         $errores += 1;
         $mensaje= "Las contraseñas no coinciden.";
@@ -112,23 +124,13 @@ class usuario{
         $mensaje= "Las contraseñas no coinciden.";
       }
 
-      // Cuando se da de alta siempre será periodista
-      $datos = $tipos->get_id_periodista();
-      while($t_usuarios = $datos[0]->fetch()){
-        $id_periodista = $t_usuarios["id"];        
-      }
-      if ( !isset($id_periodista) or is_null($id_periodista)) {
-        $errores +=1;
-        $mensaje= "Lo sentimos :( ha habido un error inesperado.";
-      }
-
 
 
       if ($errores>0) {
         echo($mensaje);
       }
       else{
-        // Insertamos en la BD
+        // Actualizamos en la BD
 
         // Ciframos la contraseña con un Hash y SHA1
         $hash = "somosomega";
