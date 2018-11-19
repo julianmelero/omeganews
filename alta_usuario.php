@@ -24,7 +24,7 @@ if(isset($_POST["enviar"])){
   
   <body>  
   <?php require_once "header.php"; ?>
-    <form name="alta" id="alta" class="" action="" method="post">
+    <form name="alta" id="alta" class="" action="" method="post" onsubmit="return comprobar();">
       <label for="nombre">Usuario*</label>
       <input type="text" required name="usuario" value='<?php if(isset($_POST["usuario"])){ echo $_POST["usuario"]; } ?>'>
       <label for="pass">Contraseña*</label>
@@ -44,17 +44,14 @@ if(isset($_POST["enviar"])){
       <input type="submit" name='enviar' value="Registrarme">
     </form>
     <script>
-      $("#alta").submit(function(e){
-        e.preventDefault();
+      function comprobar(){
         var pass1 = $('#pass').val();
         var pass2 = $('#pass2').val();
         if (pass1!=pass2) {
           alert('Las contraseñas no coinciden');
+          return false;
         }
-        else{
-          document.getElementById("alta").submit();
-        }        
-      });      
+      } 
     </script>
 
   </body>
