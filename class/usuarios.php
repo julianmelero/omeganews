@@ -182,5 +182,15 @@ class usuario{
       $_SESSION["usuario"] = $usuario;
     }
 
+    function set_tipo_usuario($tipo,$id){
+      $con = new conexion();
+      $query = "
+      UPDATE usuarios
+      SET id_tipo_usuario = ?
+      WHERE id = ?
+      ;";
+      return $con->query($query, array($tipo,$id));
+    }
+
 
 }

@@ -30,8 +30,22 @@ Copyright (C) 2018  Julián Melero Hidalgo, Araceli Garrido García, Alfredo Ole
 	$tipos = new tipo_usuario();
 	$datos = $usuario->get_usuarios();
 	
+		// Si quiere ser Periodista
 
+		if(isset($_POST["periodista"])){
+			$usuario->set_tipo_usuario(1,$_POST["id"]);
+			header("Location: miembros.php");
+		}
 
+		if(isset($_POST["editor"])){
+			$usuario->set_tipo_usuario(2,$_POST["id"]);
+			header("Location: miembros.php");
+		}
+
+		if(isset($_POST["administrador"])){
+			$usuario->set_tipo_usuario(3,$_POST["id"]);
+			header("Location: miembros.php");
+		}
 
 
 
@@ -50,13 +64,13 @@ Copyright (C) 2018  Julián Melero Hidalgo, Araceli Garrido García, Alfredo Ole
 		<form action="" method="post">
     
 			<div class="miembros">					
-				<tr>
-					<td><?php echo $usuarios["nombre"]." ".$usuarios["ape1"]." ".$usuarios["ape2"];  ?></td>
+				<tr>				
+					<td><input type="hidden" name="id" value=' <?php echo $usuarios["id"];  ?>'><?php echo $usuarios["nombre"]." ".$usuarios["ape1"]." ".$usuarios["ape2"];  ?></td>
 					<td><?php echo $nombre_tipo;  ?></td>
 					<td>
-					<input type="submit" value="Convertir a Periodista">	
-				<input type="submit" value="Convertir a Editor">
-				<input type="submit" value="Convertir a Administrador">
+						<input type="submit" name='periodista' value="Convertir a Periodista">	
+						<input type="submit" name="editor" value="Convertir a Editor">
+						<input type="submit" name="administrador" value="Convertir a Administrador">
 				<hr>				
 				</td>
 				</tr>
