@@ -8,7 +8,19 @@
     <?php require_once "head.php"; ?>  
 </head>
 <body>
-<?php require_once "header.php"; ?> 
+<?php require_once "header.php";
+
+if (isset($_POST["guardar"])) {
+    echo "Enviado";
+}
+
+
+
+
+
+
+
+?> 
 
 <form action="" method="post">
     <input type="hidden" name="id_usuario" value='<?php  ?>'>
@@ -18,11 +30,11 @@
     <input type="text" name="subtitulo" required maxlenght="250">
     <label for="fecha">Fecha</label>
     <input type="date" name="fecha" required>
-    <label for="texto_noticia">Fecha</label>
-    <textarea name="texto_noticia" id="" cols="30" rows="10" required></textarea>
+    <label for="texto_noticia">Texto</label>
+    <textarea name="texto_noticia" id="" cols="45" rows="12" required></textarea>
     <label for="url_img">Imagen</label>
     <input type="file" name="url_img" id="url_img" accept="image/png, image/jpeg">
-    <input type="submit" value="Guardar noticia">
+    <input type="submit" name="guardar" value="Guardar Noticia">
     
     
 
