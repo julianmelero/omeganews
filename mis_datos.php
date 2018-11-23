@@ -41,7 +41,7 @@ while($t_usuario = $datos[0]->fetch()){
 }
 ?>
 
-<h2>¡Hola, <?php echo $_SESSION["usuario"]; ?>!</h2>
+<h1>¡Hola, <?php echo $_SESSION["usuario"]; ?>!</h1>
 <br>
 <p>
 Aquí puedes modificar tus datos personales.

@@ -10,6 +10,9 @@
 <body>
 <?php require_once "header.php";
 
+$hoy = date('Y-m-d');
+
+
 if (isset($_POST["guardar"])) {
     echo "Enviado";
 }
@@ -21,15 +24,15 @@ if (isset($_POST["guardar"])) {
 
 
 ?> 
-
+<h1>Nueva Noticia</h1>
 <form action="" method="post">
     <input type="hidden" name="id_usuario" value='<?php  ?>'>
     <label for="titulo">Título</label>
-    <input type="text" name="titulo" required maxlenght="250">
+    <input type="text" maxlength="250" name="titulo" required maxlenght="250">
     <label for="subtitulo">Subtítulo</label>
-    <input type="text" name="subtitulo" required maxlenght="250">
+    <input type="text" maxlength="250" name="subtitulo" required maxlenght="250">
     <label for="fecha">Fecha</label>
-    <input type="date" name="fecha" required>
+    <input type="date" name="fecha" value="<?php echo $hoy; ?>" required>
     <label for="texto_noticia">Texto</label>
     <textarea name="texto_noticia" id="" cols="45" rows="12" required></textarea>
     <label for="url_img">Imagen</label>

@@ -21,8 +21,8 @@ class publicacion{
 
     function create_publicacion($id_usuario,$titulo,$subtitulo,$id_seccion,$fecha,$texto_noticia,$url_img){
       $con = new conexion();
-      $sql = "INSERT INTO publicaciones()
-      VALUES()
+      $sql = "INSERT INTO publicaciones(id_usuario,titulo,subtitulo,id_seccion,fecha,texto_noticia,url_img)
+      VALUES($id_usuario,$titulo,$subtitulo,$id_seccion,$fecha,$texto_noticia,$url_img)
       WHERE id=?;";
       return $con->query($sql,array($id_usuario,$titulo,$subtitulo,$id_seccion,$fecha,$texto_noticia,$url_img));      
 
