@@ -5,6 +5,7 @@ Copyright (C) 2018  Julián Melero Hidalgo, Araceli Garrido García, Alfredo Ole
 require_once "tipos_usuarios.php";
 
 
+
 class usuario{
 
   function get_usuario_id($usuario){    

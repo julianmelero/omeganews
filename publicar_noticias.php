@@ -9,12 +9,21 @@
 </head>
 <body>
 <?php require_once "header.php";
-
+require_once "class/secciones.php";
+require_once "class/usuarios.php";
+$secciones = new secciones();
+$usuarios = new usuario();
+$id_usuario = $usuarios->get_usuario_id($_SESSION["usuario"]);
 $hoy = date('Y-m-d');
 
 
 if (isset($_POST["guardar"])) {
-    echo "Enviado";
+    require_once "class/publicacion.php";
+    $publicacion = new publicacion();
+    $publicacion->create_publicacion($id_usuario,$_POST["titulo"],$_POST["subtitulo"],
+    $_POST["id_seccion"],$_POST["fecha"],$_POST["texto_noticia"],$_POST["url_img"]);
+
+    
 }
 
 
@@ -33,6 +42,19 @@ if (isset($_POST["guardar"])) {
     <input type="text" maxlength="250" name="subtitulo" required maxlenght="250">
     <label for="fecha">Fecha</label>
     <input type="date" name="fecha" value="<?php echo $hoy; ?>" required>
+    <label for="seccion">Sección</label>
+    <select name="id_seccion" id="seccion">
+    <?php
+    $datos = $secciones->get_secciones();
+    
+    while($seccion = $datos[0]->fetch()){        
+        ?>        
+        <option value="<?php echo $seccion["id"]; ?>" ><?php echo $seccion["nombre"]; ?></option>        
+        <?php
+    }
+
+    ?>
+    </select>
     <label for="texto_noticia">Texto</label>
     <textarea name="texto_noticia" id="" cols="45" rows="12" required></textarea>
     <label for="url_img">Imagen</label>

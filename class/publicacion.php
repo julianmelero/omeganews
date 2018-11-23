@@ -1,5 +1,5 @@
 <?php
-require "conexion.php";
+require_once "conexion.php";
 
 $con = new conexion();
 
@@ -22,8 +22,7 @@ class publicacion{
     function create_publicacion($id_usuario,$titulo,$subtitulo,$id_seccion,$fecha,$texto_noticia,$url_img){
       $con = new conexion();
       $sql = "INSERT INTO publicaciones(id_usuario,titulo,subtitulo,id_seccion,fecha,texto_noticia,url_img)
-      VALUES($id_usuario,$titulo,$subtitulo,$id_seccion,$fecha,$texto_noticia,$url_img)
-      WHERE id=?;";
+      VALUES(?,?,?,?,?,?,?);";
       return $con->query($sql,array($id_usuario,$titulo,$subtitulo,$id_seccion,$fecha,$texto_noticia,$url_img));      
 
     }
