@@ -22,7 +22,11 @@ if (isset($_POST["guardar"])) {
     $publicacion = new publicacion();
     $publicacion->create_publicacion($id_usuario,$_POST["titulo"],$_POST["subtitulo"],
     $_POST["id_seccion"],$_POST["fecha"],$_POST["texto_noticia"],$_POST["url_img"]);
-
+    
+    $palabras =  explode(",",$_POST["palabra_clave"]);
+    foreach ($palabras as $valor) {
+        echo $valor;
+    }
     
 }
 
@@ -42,6 +46,8 @@ if (isset($_POST["guardar"])) {
     <input type="text" maxlength="250" name="subtitulo" required maxlenght="250">
     <label for="fecha">Fecha</label>
     <input type="date" name="fecha" value="<?php echo $hoy; ?>" required>
+    <label for="palabra_clave">Palabras Clave (searado por comas)</label>
+    <input type="text" maxlength="250" name="palabra_clave" required maxlenght="250">
     <label for="seccion">Sección</label>
     <select name="id_seccion" id="seccion">
     <?php
