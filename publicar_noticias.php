@@ -11,8 +11,10 @@
 <?php require_once "header.php";
 require_once "class/secciones.php";
 require_once "class/usuarios.php";
+require_once "class/palabras_clave.php";
 $secciones = new secciones();
 $usuarios = new usuario();
+$palabras_clave = new palabras_clave();
 $id_usuario = $usuarios->get_usuario_id($_SESSION["usuario"]);
 $hoy = date('Y-m-d');
 
@@ -20,12 +22,22 @@ $hoy = date('Y-m-d');
 if (isset($_POST["guardar"])) {
     require_once "class/publicacion.php";
     $publicacion = new publicacion();
-    $publicacion->create_publicacion($id_usuario,$_POST["titulo"],$_POST["subtitulo"],
+    $resultado = $publicacion->create_publicacion($id_usuario,$_POST["titulo"],$_POST["subtitulo"],
     $_POST["id_seccion"],$_POST["fecha"],$_POST["texto_noticia"],$_POST["url_img"]);
-    
+    $id_publicacion = $resultado[1];
+
     $palabras =  explode(",",$_POST["palabra_clave"]);
     foreach ($palabras as $valor) {
-        echo $valor;
+        $existe = $palabras_clave->existe_palabra($valor);
+        if ($existe==0) {
+            $resultado_palabra = $palabras_clave->set_palabra($valor);
+            $id_palabra = $resultado_palabra[1];
+            $palabras_clave->set_palabra_publicacion($id_publicacion,$id_palabra);
+        }
+        else{
+            $id_palabra = $palabras_clave->get_id_palabra($valor);
+            $palabras_clave->set_palabra_publicacion($id_publicacion,$id_palabra);
+        }
     }
     
 }

@@ -14,14 +14,14 @@ class palabras_clave{
     function set_palabra($palabra){      
         $con = new conexion();
         $palabra = strtolower($palabra);
-        $sql = "INSERT INTO palabras_clave(nombre) VALUES(?);";
+        $sql = "INSERT INTO palabras_clave(palabra) VALUES (?);";
         return $con->query($sql,array($palabra));      
     }
 
     function set_palabra_publicacion($id_publicacion,$id_palabra){      
         $con = new conexion();        
         $sql = "INSERT INTO palabras_clave_publicacion(id_publicacion,id_palabra) VALUES(?,?);";
-        return $con->query($sql,array($palabra));      
+        return $con->query($sql,array($id_publicacion,$id_palabra));      
     }
     function existe_palabra($palabra){
         $palabra = strtolower($palabra);
@@ -34,6 +34,15 @@ class palabras_clave{
           else{
             return 0;
           }
+    }
+
+    function get_id_palabra($palabra){
+        $con = new conexion();
+        $sql = "SELECT id FROM palabras_clave WHERE palabra= ?;";
+        $datos =  $con->query($sql,array($palabra));      
+        while ($res = $datos[0]->fetch()) {
+            return $res["id"];
+        }
     }
 
 }
