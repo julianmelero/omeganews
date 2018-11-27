@@ -36,11 +36,14 @@ class usuario{
       $pass = $hash . $pwd;
       $pass = hash("SHA1",$pass);      
       $con = new conexion();
-      $sql = "SELECT usuario FROM usuarios WHERE usuario = ? and pass=?;";
+      $sql = "SELECT usuario,id_tipo_usuario FROM usuarios WHERE usuario = ? and pass=?;";
       $resultado = $con->query($sql,array($usuario,$pass));
+      while ($datos = $resultado[0]->fetch()) {
+        $id_tipo_usuario = $datos["id_tipo_usuario"];
+      }
       if($resultado[0]->rowCount() == 1){
         // Credenciales correctas
-        $this->crear_sesion($usuario);                
+        $this->crear_sesion($usuario,$id_tipo_usuario);                
         header("Location: ./index.php");
       }
       else{
@@ -111,7 +114,7 @@ class usuario{
         VALUES('$usuario','$nombre','$pass','$ape1','$ape2',$id_periodista,'$email','$telefono');";        
         if($con->query($query,array())){
           // Creamos las sessiones y vamos a index
-          $this->crear_sesion($usuario);                        
+          $this->crear_sesion($usuario,$id_periodista);                        
           header("Location: ./index.php");
         }
         
@@ -178,9 +181,12 @@ class usuario{
       }
     }
 
-    function crear_sesion($usuario){
+    function crear_sesion($usuario,$id_tipo_usuario){
       session_start();
       $_SESSION["usuario"] = $usuario;
+      $_SESSION["id_tipo_usuario"] = $id_tipo_usuario;
+      $tipos = new tipo_usuario();      
+      $_SESSION["tipo_usuario"] = $tipos->get_tipo_usuario($id_tipo_usuario);
     }
 
     function set_tipo_usuario($tipo,$id){
