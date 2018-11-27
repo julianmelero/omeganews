@@ -6,7 +6,7 @@ class publicacion{
 
     function get_publicaciones(){      
         $con = new conexion();
-        $sql = "SELECT * FROM usuarios;";
+        $sql = "SELECT * FROM publicaciones WHERE aprobado=1;";
         return $con->query($sql,array());      
       }
 
@@ -16,6 +16,12 @@ class publicacion{
         WHERE id=?;";
         return $con->query($sql,array($id));      
       }
+
+    function get_publicaciones_no_aprobadas(){
+      $con = new conexion();
+      $sql = "SELECT * FROM publicaciones;";
+      return $con->query($sql,array());    
+    }  
 
     function create_publicacion($id_usuario,$titulo,$subtitulo,$id_seccion,$fecha,$texto_noticia,$url_img){
       $con = new conexion();
