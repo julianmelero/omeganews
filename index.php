@@ -20,11 +20,25 @@ Copyright (C) 2018  Julián Melero Hidalgo, Araceli Garrido García, Alfredo Ole
       // Primero mostramos las noticias que faltan por revisar
       require_once "class/publicacion.php";
       $publicaciones = new publicacion();
-      $no_aprobadas = $publicaciones->get_publicaciones_no_aprobadas();
-      while ($datos = $no_aprobadas[0]->fetch()) {
-        echo "<h1>".$datos["titulo"]."</h1>";
-      } 
-
+      if (isset($_SESSION["usuario"])) {              
+        if ($_SESSION["tipo_usuario"]== "Administrador" or $_SESSION["tipo_usuario"]== "Editor") {
+                
+        $no_aprobadas = $publicaciones->get_publicaciones_no_aprobadas();
+        echo "<h1>Noticias por aprobar</h1>";
+        while ($datos = $no_aprobadas[0]->fetch()) {
+          echo "<form action=''>";
+          echo "<h1>".$datos["titulo"]."</h1>";
+          echo "<h2>".$datos["subtitulo"]."</h2>";
+          echo substr($datos["texto_noticia"],0,150);
+          if (strlen($datos["texto_noticia"])> 150 ) {
+            echo "...";
+          } 
+          echo "<br>";         
+          echo "<input type='submit' value='Editar' name='editar'>";
+          echo "</form>";
+        } 
+      }
+    }
       // Aquí ponemos las noticias ya aprobadas, y que pueden ser modificadas sólo por admin y editor
 
 
