@@ -11,6 +11,15 @@ class palabras_clave{
         return $con->query($sql,array($id));      
     }
 
+    function get_palabra($id){      
+        $con = new conexion();
+        $sql = "SELECT * FROM palabras_clave WHERE id= ?;";
+        $datos = $con->query($sql,array($id));      
+        while ($palabra = $datos[0]->fetch()) {
+            return $palabra["palabra"];
+        }
+    }
+
     function set_palabra($palabra){      
         $con = new conexion();
         $palabra = strtolower($palabra);

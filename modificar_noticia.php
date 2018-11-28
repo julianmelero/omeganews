@@ -33,6 +33,21 @@ while ($datos = $publi[0]->fetch()) {
     $aprobado = $datos["aprobado"];
 }
 
+// Cogemos las palabras de la publicación
+$palabras_publicacion =  $palabras_clave->get_palabras_publicacion($_POST["id"]);
+$palabra='';
+while ($palabras = $palabras_publicacion[0]->fetch()) {
+    // Por cada clave cogemos el nombre de palabras clave    
+    $idpalabra = $palabras["id_palabra"];
+    $aux = $palabras_clave->get_palabra($idpalabra);
+    if ($palabra=='') {
+        $palabra = $aux;    
+    }else{
+    $palabra = $palabra.",".$aux;
+    }
+}
+
+
 if (isset($_POST["guardar"])) {
     require_once "class/publicacion.php";
     $publicacion = new publicacion();
@@ -53,6 +68,7 @@ if (isset($_POST["guardar"])) {
             $palabras_clave->set_palabra_publicacion($id_publicacion,$id_palabra);
         }
     }
+
     
 }
 
@@ -68,7 +84,7 @@ if (isset($_POST["guardar"])) {
     <label for="fecha">Fecha</label>
     <input type="date" name="fecha" value="<?php echo $fecha; ?>" required>
     <label for="palabra_clave">Palabras Clave (searado por comas)</label>
-    <input type="text" maxlength="250" name="palabra_clave" required maxlenght="250">
+    <input type="text" maxlength="250" name="palabra_clave" required maxlenght="250" value="<?php echo $palabra; ?>" >
     <label for="seccion">Sección</label>
     <select name="id_seccion" id="seccion">
     <?php
@@ -83,10 +99,11 @@ if (isset($_POST["guardar"])) {
     ?>
     </select>
     <label for="texto_noticia">Texto</label>
-    <textarea name="texto_noticia" id="" cols="45" rows="12" required></textarea>
+    <textarea name="texto_noticia" id="" cols="45" rows="12" required><?php echo $texto_noticia; ?></textarea>
     <label for="url_img">Imagen</label>
     <input type="file" name="url_img" id="url_img" accept="image/png, image/jpeg">
     <input type="submit" name="guardar" value="Guardar Noticia">
+    <input type="submit" name="aprobar" value="Guardar/Aprobar">
     
     
 
