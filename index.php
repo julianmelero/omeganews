@@ -27,8 +27,9 @@ Copyright (C) 2018  Julián Melero Hidalgo, Araceli Garrido García, Alfredo Ole
         echo "<h1>Noticias por aprobar</h1>";
         while ($datos = $no_aprobadas[0]->fetch()) {
           echo "<form action=''>";
-          echo "<h1>".$datos["titulo"]."</h1>";
-          echo "<h2>".$datos["subtitulo"]."</h2>";
+          echo "<input type='hidden' name='id' value='".$datos["id"]."'></input> ";
+          echo "<h2>".$datos["titulo"]."</h2>";
+          echo "<h3>".$datos["subtitulo"]."</h3>";
           echo substr($datos["texto_noticia"],0,150);
           if (strlen($datos["texto_noticia"])> 150 ) {
             echo "...";
