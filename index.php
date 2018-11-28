@@ -26,8 +26,8 @@ Copyright (C) 2018  Julián Melero Hidalgo, Araceli Garrido García, Alfredo Ole
         $no_aprobadas = $publicaciones->get_publicaciones_no_aprobadas();
         echo "<h1>Noticias por aprobar</h1>";
         while ($datos = $no_aprobadas[0]->fetch()) {
-          echo "<form action=''>";
-          echo "<input type='hidden' name='id' value='".$datos["id"]."'></input> ";
+          echo "<form action='modificar_noticia.php' method='post'>";
+          echo "<input type='hidden' name='id' value='".$datos["id"]."' id='id'></input> ";
           echo "<h2>".$datos["titulo"]."</h2>";
           echo "<h3>".$datos["subtitulo"]."</h3>";
           echo substr($datos["texto_noticia"],0,150);
