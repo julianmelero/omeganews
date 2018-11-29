@@ -30,6 +30,7 @@ Copyright (C) 2018  Julián Melero Hidalgo, Araceli Garrido García, Alfredo Ole
           echo "<input type='hidden' name='id' value='".$datos["id"]."' id='id'></input> ";
           echo "<h2>".$datos["titulo"]."</h2>";
           echo "<h3>".$datos["subtitulo"]."</h3>";
+          echo "<h4>".date("d-m-Y",strtotime($datos["fecha"]))."</h4>";
           echo substr($datos["texto_noticia"],0,150);
           if (strlen($datos["texto_noticia"])> 150 ) {
             echo "...";

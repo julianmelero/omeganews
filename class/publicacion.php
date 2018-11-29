@@ -19,7 +19,7 @@ class publicacion{
 
     function get_publicaciones_no_aprobadas(){
       $con = new conexion();
-      $sql = "SELECT * FROM publicaciones WHERE aprobado=0;";
+      $sql = "SELECT * FROM publicaciones WHERE aprobado=0 order by fecha ASC;";
       return $con->query($sql,array());    
     }  
 

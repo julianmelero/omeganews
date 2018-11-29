@@ -125,7 +125,7 @@ while ($palabras = $palabras_publicacion[0]->fetch()) {
     
     while($seccion = $datos[0]->fetch()){        
         ?>        
-        <option value="<?php echo $seccion["id"]; ?>" ><?php echo $seccion["nombre"]; ?></option>        
+        <option value="<?php echo $seccion["id"];?>" <?php if($seccion["id"]==$id_seccion){ echo "selected='true'"; } ?>" ><?php echo $seccion["nombre"]; ?></option>        
         <?php
     }
 
@@ -136,7 +136,7 @@ while ($palabras = $palabras_publicacion[0]->fetch()) {
     <label for="url_img">Imagen</label>
     <input type="file" name="url_img" id="url_img" accept="image/png, image/jpeg">
     <input type="submit" name="guardar" value="Guardar Noticia">
-    <input type="submit" name="aprobar" value="Guardar/Aprobar">
+    <input type="submit" name="aprobar" value="Guardar y Aprobar">
     
     
 
