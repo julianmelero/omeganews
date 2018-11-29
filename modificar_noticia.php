@@ -46,6 +46,32 @@ if (isset($_POST["guardar"])) {
     }    
 }
 
+if (isset($_POST["aprobar"])) {
+    require_once "class/publicacion.php";
+    $publicacion = new publicacion();                
+    $resultado = $publicacion->update_publicacion($_POST["id_usuario"],$_POST["titulo"],$_POST["subtitulo"],    
+    $_POST["id_seccion"],$_POST["fecha"],$_POST["texto_noticia"],$_POST["url_img"],$_POST["id"]);        
+    
+    $id_publicacion = $_POST["id"];
+    $palabras =  explode(",",$_POST["palabra_clave"]);
+    // Primero borro las palabras asociadas a la publicacion
+    $palabras_clave->delete_palabra_publicacion($id_publicacion);
+    foreach ($palabras as $valor) {
+        $existe = $palabras_clave->existe_palabra($valor);     
+        if ($existe==0) {
+            $resultado_palabra = $palabras_clave->set_palabra($valor);
+            $id_palabra = $resultado_palabra[1];           
+            // Ahora insertamos las palabras de en la publicacion
+            $palabras_clave->set_palabra_publicacion($id_publicacion,$id_palabra);
+        }
+        else{            
+            // Ahora insertamos las palabras de en la publicacion
+            $id_palabra = $palabras_clave->get_id_palabra($valor);
+            $palabras_clave->set_palabra_publicacion($id_publicacion,$id_palabra);
+        }
+    }
+    $publicacion->aprobar($id_publicacion);    
+}
 
 
 $publi = $publicacion->get_publicacion($_POST["id"]);

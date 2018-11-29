@@ -39,6 +39,14 @@ class publicacion{
       return $con->query($sql,array($id_usuario,$titulo,$subtitulo,$id_seccion,$fecha,$texto_noticia,$url_img,$id));      
 
     }
+
+    function aprobar($id){
+      $con = new conexion();      
+      $sql = "UPDATE publicaciones 
+      SET aprobado=1
+      WHERE id= ?;";      
+      return $con->query($sql,array($id));      
+    }
 }
 
 
