@@ -51,7 +51,7 @@ if (isset($_POST["guardar"])) {
 ?> 
 <h1>Nueva Noticia</h1>
 <form action="" method="post">
-    <input type="hidden" name="id_usuario" value='<?php  ?>'>
+    <input type="hidden" name="id_usuario" value='<?php echo $id_usuario; ?>'>
     <label for="titulo">Título</label>
     <input type="text" maxlength="250" name="titulo" required maxlenght="250">
     <label for="subtitulo">Subtítulo</label>

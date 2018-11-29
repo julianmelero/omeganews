@@ -31,10 +31,11 @@ class publicacion{
 
     }
 
-    function update_publicacion($id,$id_usuario,$titulo,$subtitulo,$id_seccion,$fecha,$texto_noticia,$url_img){
-      $con = new conexion();
-      $sql = "UPDATE publicaciones SET id_usuario=?,titulo=?,subtitulo=?,id_seccion=?,fecha=?,texto_noticia=?,url_img=?
-       WHERE id=?;";
+    function update_publicacion($id_usuario,$titulo,$subtitulo,$id_seccion,$fecha,$texto_noticia,$url_img,$id){
+      $con = new conexion();      
+      $sql = "UPDATE publicaciones 
+      SET id_usuario= ?,titulo = ?,subtitulo= ?,id_seccion= ?,fecha= ?,texto_noticia= ?,url_img= ? 
+      WHERE id= ?;";      
       return $con->query($sql,array($id_usuario,$titulo,$subtitulo,$id_seccion,$fecha,$texto_noticia,$url_img,$id));      
 
     }
