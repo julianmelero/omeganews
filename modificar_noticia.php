@@ -16,13 +16,41 @@ $secciones = new secciones();
 $usuarios = new usuario();
 $palabras_clave = new palabras_clave();
 $id_usuario = $usuarios->get_usuario_id($_SESSION["usuario"]);
+echo "Id_usuario:".$id_usuario;
 $hoy = date('Y-m-d');
 require_once "class/publicacion.php";
 $publicacion = new publicacion();
 
+if (isset($_POST["guardar"])) {
+    require_once "class/publicacion.php";
+    $publicacion = new publicacion();
+    $resultado = $publicacion->update_publicacion($_POST["titulo"],$id_usuario,$_POST["titulo"],$_POST["subtitulo"],
+    $_POST["id_seccion"],$_POST["fecha"],$_POST["texto_noticia"],$_POST["url_img"],$_POST["id"]);    
+    $id_publicacion = $resultado[1];    
+    $palabras =  explode(",",$_POST["palabra_clave"]);
+    foreach ($palabras as $valor) {
+        $existe = $palabras_clave->existe_palabra($valor);
+        if ($existe==0) {
+            $resultado_palabra = $palabras_clave->set_palabra($valor);
+            $id_palabra = $resultado_palabra[1];
+            $palabras_clave->set_palabra_publicacion($id_publicacion,$id_palabra);
+        }
+        else{
+            // Primero borro las palabras asociadas a la publicacion
+            $palabras_clave->delete_palabra_publicacion($id_publicacion);
+            // Ahora insertamos las palabras de en la publicacion
+            $id_palabra = $palabras_clave->get_id_palabra($valor);
+            $palabras_clave->set_palabra_publicacion($id_publicacion,$id_palabra);
+        }
+    }    
+}
+
+
+
 $publi = $publicacion->get_publicacion($_POST["id"]);
 
 while ($datos = $publi[0]->fetch()) {
+    $id = $datos["id"];
     $titulo = $datos["titulo"];
     $subtitulo = $datos["subtitulo"];
     $id_usuario = $datos["id_usuario"];
@@ -48,35 +76,13 @@ while ($palabras = $palabras_publicacion[0]->fetch()) {
 }
 
 
-if (isset($_POST["guardar"])) {
-    require_once "class/publicacion.php";
-    $publicacion = new publicacion();
-    $resultado = $publicacion->set_publicacion($id_usuario,$_POST["titulo"],$_POST["subtitulo"],
-    $_POST["id_seccion"],$_POST["fecha"],$_POST["texto_noticia"],$_POST["url_img"]);
-    $id_publicacion = $resultado[1];
-
-    $palabras =  explode(",",$_POST["palabra_clave"]);
-    foreach ($palabras as $valor) {
-        $existe = $palabras_clave->existe_palabra($valor);
-        if ($existe==0) {
-            $resultado_palabra = $palabras_clave->set_palabra($valor);
-            $id_palabra = $resultado_palabra[1];
-            $palabras_clave->set_palabra_publicacion($id_publicacion,$id_palabra);
-        }
-        else{
-            $id_palabra = $palabras_clave->get_id_palabra($valor);
-            $palabras_clave->set_palabra_publicacion($id_publicacion,$id_palabra);
-        }
-    }
-
-    
-}
 
 
 ?> 
 <h1>Modificar Noticia</h1>
 <form action="" method="post">
-    <input type="hidden" name="id_usuario" value='value="<?php echo $id; ?>'>
+    <input type="hidden" name="id" id='id' value="<?php echo $id; ?>">  
+    <input type="hidden" name="id_usuario" id='id' value="<?php echo $id_usuario; ?>">
     <label for="titulo">Título</label>
     <input type="text" maxlength="250" name="titulo" required maxlenght="250" value="<?php echo $titulo; ?>">
     <label for="subtitulo">Subtítulo</label>

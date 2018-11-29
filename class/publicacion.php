@@ -19,7 +19,7 @@ class publicacion{
 
     function get_publicaciones_no_aprobadas(){
       $con = new conexion();
-      $sql = "SELECT * FROM publicaciones;";
+      $sql = "SELECT * FROM publicaciones WHERE aprobado=0;";
       return $con->query($sql,array());    
     }  
 
@@ -31,6 +31,13 @@ class publicacion{
 
     }
 
+    function update_publicacion($id,$id_usuario,$titulo,$subtitulo,$id_seccion,$fecha,$texto_noticia,$url_img){
+      $con = new conexion();
+      $sql = "UPDATE publicaciones SET id_usuario=?,titulo=?,subtitulo=?,id_seccion=?,fecha=?,texto_noticia=?,url_img=?
+       WHERE id=?;";
+      return $con->query($sql,array($id_usuario,$titulo,$subtitulo,$id_seccion,$fecha,$texto_noticia,$url_img,$id));      
+
+    }
 }
 
 

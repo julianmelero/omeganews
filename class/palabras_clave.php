@@ -32,6 +32,13 @@ class palabras_clave{
         $sql = "INSERT INTO palabras_clave_publicacion(id_publicacion,id_palabra) VALUES(?,?);";
         return $con->query($sql,array($id_publicacion,$id_palabra));      
     }
+
+    function delete_palabra_publicacion($id_publicacion){
+        $con = new conexion();        
+        $sql = "DELETE FROM palabras_clave_publicacion
+        WHERE id_publicacion=?;";
+        return $con->query($sql,array($id_publicacion));      
+    }
     function existe_palabra($palabra){
         $palabra = strtolower($palabra);
         $con = new conexion();
