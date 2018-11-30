@@ -20,13 +20,15 @@ Copyright (C) 2018  Julián Melero Hidalgo, Araceli Garrido García, Alfredo Ole
       // Primero mostramos las noticias que faltan por revisar
       require_once "class/publicacion.php";
       $publicaciones = new publicacion();
-      $aprobadas = $publicaciones->get_publicaciones();        
+      $aprobadas = $publicaciones->get_publicacion($_POST["id"]);        
         while ($datos = $aprobadas[0]->fetch()) {
+          $dir = "img_noticias/".$datos["id"]."/".$datos["url_img"];
           echo "<form action='modificar_noticia.php' method='post'>";
           echo "<input type='hidden' name='id' value='".$datos["id"]."' id='id'></input> ";
           echo "<h4> Fecha: ".date("d-m-Y",strtotime($datos["fecha"]))."</h4>";
           echo "<h2>".$datos["titulo"]."</h2>";
-          echo "<h3>".$datos["subtitulo"]."</h3>";          
+          echo "<h3>".$datos["subtitulo"]."</h3>"; 
+          echo "<img src='".$dir."'  width='250px' heigth='200px'><br>";         
           echo substr($datos["texto_noticia"],0,150);
           if (strlen($datos["texto_noticia"])> 150 ) {
             echo "...";

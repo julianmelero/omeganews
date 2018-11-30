@@ -24,35 +24,16 @@ $publicacion = new publicacion();
 
 if (isset($_POST["guardar"])) {
     require_once "class/publicacion.php";
-    $publicacion = new publicacion();                
+    $publicacion = new publicacion();    
+    if($_FILES["imagen"]["size"]==0){
+        $publi = $publicacion->get_publicacion($_POST["id"]);
+        while ($datos = $publi[0]->fetch()) {            
+            $url_img = $datos["url_img"];            
+        }  
+        $_FILES["imagen"]['name'] = $url_img;
+    }
     $resultado = $publicacion->update_publicacion($_POST["id_usuario"],$_POST["titulo"],$_POST["subtitulo"],    
-    $_POST["id_seccion"],$_POST["fecha"],$_POST["texto_noticia"],$_POST["url_img"],$_POST["id"]);        
-    
-    $id_publicacion = $_POST["id"];
-    $palabras =  explode(",",$_POST["palabra_clave"]);
-    // Primero borro las palabras asociadas a la publicacion
-    $palabras_clave->delete_palabra_publicacion($id_publicacion);
-    foreach ($palabras as $valor) {
-        $existe = $palabras_clave->existe_palabra($valor);     
-        if ($existe==0) {
-            $resultado_palabra = $palabras_clave->set_palabra($valor);
-            $id_palabra = $resultado_palabra[1];           
-            // Ahora insertamos las palabras de en la publicacion
-            $palabras_clave->set_palabra_publicacion($id_publicacion,$id_palabra);
-        }
-        else{            
-            // Ahora insertamos las palabras de en la publicacion
-            $id_palabra = $palabras_clave->get_id_palabra($valor);
-            $palabras_clave->set_palabra_publicacion($id_publicacion,$id_palabra);
-        }
-    }    
-}
-
-if (isset($_POST["aprobar"])) {
-    require_once "class/publicacion.php";
-    $publicacion = new publicacion();                
-    $resultado = $publicacion->update_publicacion($_POST["id_usuario"],$_POST["titulo"],$_POST["subtitulo"],    
-    $_POST["id_seccion"],$_POST["fecha"],$_POST["texto_noticia"],$_POST["url_img"],$_POST["id"]);        
+    $_POST["id_seccion"],$_POST["fecha"],$_POST["texto_noticia"],$_FILES["imagen"]['name'],$_POST["id"]);        
     
     $id_publicacion = $_POST["id"];
     $palabras =  explode(",",$_POST["palabra_clave"]);
@@ -72,7 +53,58 @@ if (isset($_POST["aprobar"])) {
             $palabras_clave->set_palabra_publicacion($id_publicacion,$id_palabra);
         }
     }
-    $publicacion->aprobar($id_publicacion);    
+    // Subimos la imagen    
+    if($_FILES["imagen"]["size"]>0){        
+        if (!is_dir("img_noticias/".$id_publicacion)) {
+            mkdir("img_noticias/".$id_publicacion);
+        }
+        $dir_subida = 'img_noticias/'.$id_publicacion."/";
+        $fichero_subido = $dir_subida . basename($_FILES['imagen']['name']);        
+        move_uploaded_file($_FILES['imagen']['tmp_name'], $fichero_subido);
+    }
+}    
+
+
+if (isset($_POST["aprobar"])) {
+    require_once "class/publicacion.php";
+    $publicacion = new publicacion(); 
+    if($_FILES["imagen"]["size"]==0){
+        $publi = $publicacion->get_publicacion($_POST["id"]);
+        while ($datos = $publi[0]->fetch()) {            
+            $url_img = $datos["url_img"];            
+        }  
+        $_FILES["imagen"]['name'] = $url_img;
+    }               
+    $resultado = $publicacion->update_publicacion($_POST["id_usuario"],$_POST["titulo"],$_POST["subtitulo"],    
+    $_POST["id_seccion"],$_POST["fecha"],$_POST["texto_noticia"],$_FILES["imagen"]["name"],$_POST["id"]);        
+    
+    $id_publicacion = $_POST["id"];
+    $palabras =  explode(",",$_POST["palabra_clave"]);
+    // Primero borro las palabras asociadas a la publicacion
+    $palabras_clave->delete_palabra_publicacion($id_publicacion);
+    foreach ($palabras as $valor) {
+        $existe = $palabras_clave->existe_palabra($valor);     
+        if ($existe==0) {
+            $resultado_palabra = $palabras_clave->set_palabra($valor);
+            $id_palabra = $resultado_palabra[1];           
+            // Ahora insertamos las palabras de en la publicacion
+            $palabras_clave->set_palabra_publicacion($id_publicacion,$id_palabra);
+        }
+        else{            
+            // Ahora insertamos las palabras de en la publicacion
+            $id_palabra = $palabras_clave->get_id_palabra($valor);
+            $palabras_clave->set_palabra_publicacion($id_publicacion,$id_palabra);
+        }
+    }
+    if($_FILES["imagen"]["name"]!=''){
+        if (!is_dir("img_noticias/".$id_publicacion)) {
+            mkdir("img_noticias/".$id_publicacion);
+        }
+        $dir_subida = 'img_noticias/'.$id_publicacion."/";
+        $fichero_subido = $dir_subida . basename($_FILES['imagen']['name']);        
+        move_uploaded_file($_FILES['imagen']['tmp_name'], $fichero_subido);
+        $publicacion->aprobar($id_publicacion);    
+    }
 }
 
 
@@ -111,7 +143,7 @@ while ($palabras = $palabras_publicacion[0]->fetch()) {
 
 ?> 
 <h1>Modificar Noticia</h1>
-<form action="" method="post">
+<form  enctype="multipart/form-data" action="" method="post">
     <input type="hidden" name="id" id='id' value="<?php echo $id; ?>">  
     <input type="hidden" name="id_usuario" id='id_usuario' value="<?php echo $id_usuario; ?>">
     <label for="titulo">Título</label>
@@ -138,8 +170,8 @@ while ($palabras = $palabras_publicacion[0]->fetch()) {
     <label for="texto_noticia">Texto</label>
     <textarea name="texto_noticia" id="" cols="45" rows="12" required><?php echo $texto_noticia; ?></textarea>
     <label for="url_img">Imagen</label>
-    <input type="file" name="url_img" id="url_img" accept="image/png, image/jpeg">
-    <img src="<?php echo $dir; ?>" alt="">
+    <input type="file" name="imagen" id="imagen" accept="image/png, image/jpeg">
+    <img src="<?php echo $dir; ?>" alt="" width='250px' heigth='200px'>
     <input type="submit" name="guardar" value="Guardar Noticia">
     <input type="submit" name="aprobar" value="Guardar y Aprobar">
         

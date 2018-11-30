@@ -26,9 +26,11 @@ Copyright (C) 2018  Julián Melero Hidalgo, Araceli Garrido García, Alfredo Ole
         $no_aprobadas = $publicaciones->get_publicaciones_no_aprobadas();
         echo "<h1>Noticias por aprobar</h1>";
         while ($datos = $no_aprobadas[0]->fetch()) {
+          $dir = "img_noticias/".$datos["id"]."/".$datos["url_img"];
           echo "<form action='modificar_noticia.php' method='post'>";
           echo "<input type='hidden' name='id' value='".$datos["id"]."' id='id'></input> ";
           echo "<h2>".$datos["titulo"]."</h2>";
+          echo "<img src='".$dir."'  width='250px' heigth='200px'>";
           echo "<h3>".$datos["subtitulo"]."</h3>";
           echo "<h4>".date("d-m-Y",strtotime($datos["fecha"]))."</h4>";
           echo substr($datos["texto_noticia"],0,150);
@@ -42,12 +44,15 @@ Copyright (C) 2018  Julián Melero Hidalgo, Araceli Garrido García, Alfredo Ole
       }
     }
       $aprobadas = $publicaciones->get_publicaciones();
+      
         echo "<h1>Noticias</h1>";
         while ($datos = $aprobadas[0]->fetch()) {
+          $dir = "img_noticias/".$datos["id"]."/".$datos["url_img"];
           echo "<form action='noticia.php' method='post'>";
           echo "<input type='hidden' name='id' value='".$datos["id"]."' id='id'></input> ";
           echo "<h2>".$datos["titulo"]."</h2>";
           echo "<h3>".$datos["subtitulo"]."</h3>";
+          echo "<img src='".$dir."'  width='250px' heigth='200px'>";
           echo "<h4>".date("d-m-Y",strtotime($datos["fecha"]))."</h4>";
           echo substr($datos["texto_noticia"],0,150);
           if (strlen($datos["texto_noticia"])> 150 ) {
