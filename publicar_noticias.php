@@ -23,7 +23,7 @@ if (isset($_POST["guardar"])) {
     require_once "class/publicacion.php";
     $publicacion = new publicacion();
     $resultado = $publicacion->create_publicacion($id_usuario,$_POST["titulo"],$_POST["subtitulo"],
-    $_POST["id_seccion"],$_POST["fecha"],$_POST["texto_noticia"],$_POST["url_img"]);
+    $_POST["id_seccion"],$_POST["fecha"],$_POST["texto_noticia"],$_FILES['imagen']['name']);
     $id_publicacion = $resultado[1];
 
     $palabras =  explode(",",$_POST["palabra_clave"]);
@@ -39,18 +39,20 @@ if (isset($_POST["guardar"])) {
             $palabras_clave->set_palabra_publicacion($id_publicacion,$id_palabra);
         }
     }
-    
+
+
+    // Subimos la imagen
+    if (!is_dir("img_noticias/".$id_publicacion)) {
+        mkdir("img_noticias/".$id_publicacion);
+    }
+    $dir_subida = 'img_noticias/'.$id_publicacion."/";
+    $fichero_subido = $dir_subida . basename($_FILES['imagen']['name']);        
+    move_uploaded_file($_FILES['imagen']['tmp_name'], $fichero_subido);
 }
-
-
-
-
-
-
 
 ?> 
 <h1>Nueva Noticia</h1>
-<form action="" method="post">
+<form enctype="multipart/form-data" action="" method="post">
     <input type="hidden" name="id_usuario" value='<?php echo $id_usuario; ?>'>
     <label for="titulo">Título</label>
     <input type="text" maxlength="250" name="titulo" required maxlenght="250">
@@ -76,7 +78,7 @@ if (isset($_POST["guardar"])) {
     <label for="texto_noticia">Texto</label>
     <textarea name="texto_noticia" id="" cols="45" rows="12" required></textarea>
     <label for="url_img">Imagen</label>
-    <input type="file" name="url_img" id="url_img" accept="image/png, image/jpeg">
+    <input type="file" name="imagen" id="imagen" accept="image/png, image/jpeg">
     <input type="submit" name="guardar" value="Guardar Noticia">
     
     
