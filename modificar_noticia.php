@@ -90,10 +90,8 @@ while ($datos = $publi[0]->fetch()) {
     $aprobado = $datos["aprobado"];
 }
 
-$dir= getcwd();
-$dir = $dir."/img_noticias/".$id."/".$url_img;
-$dir= str_replace("\\","/",$dir);
-echo $dir;
+
+$dir = "img_noticias/".$id."/".$url_img;
 // Cogemos las palabras de la publicación
 $palabras_publicacion =  $palabras_clave->get_palabras_publicacion($_POST["id"]);
 $palabra='';
@@ -140,7 +138,7 @@ while ($palabras = $palabras_publicacion[0]->fetch()) {
     <label for="texto_noticia">Texto</label>
     <textarea name="texto_noticia" id="" cols="45" rows="12" required><?php echo $texto_noticia; ?></textarea>
     <label for="url_img">Imagen</label>
-    <input type="file" name="url_img" id="url_img" accept="image/png, image/jpeg" ?>">
+    <input type="file" name="url_img" id="url_img" accept="image/png, image/jpeg">
     <img src="<?php echo $dir; ?>" alt="">
     <input type="submit" name="guardar" value="Guardar Noticia">
     <input type="submit" name="aprobar" value="Guardar y Aprobar">
