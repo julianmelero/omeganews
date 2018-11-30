@@ -44,7 +44,7 @@ Copyright (C) 2018  Julián Melero Hidalgo, Araceli Garrido García, Alfredo Ole
       $aprobadas = $publicaciones->get_publicaciones();
         echo "<h1>Noticias</h1>";
         while ($datos = $aprobadas[0]->fetch()) {
-          echo "<form action='modificar_noticia.php' method='post'>";
+          echo "<form action='noticia.php' method='post'>";
           echo "<input type='hidden' name='id' value='".$datos["id"]."' id='id'></input> ";
           echo "<h2>".$datos["titulo"]."</h2>";
           echo "<h3>".$datos["subtitulo"]."</h3>";
