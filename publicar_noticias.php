@@ -52,7 +52,7 @@ if (isset($_POST["guardar"])) {
 
 ?> 
 <h1>Nueva Noticia</h1>
-<form enctype="multipart/form-data" action="" method="post">
+<form enctype="multipart/form-data" action="publicar_noticias.php" method="post">
     <input type="hidden" name="id_usuario" value='<?php echo $id_usuario; ?>'>
     <label for="titulo">Título</label>
     <input type="text" maxlength="250" name="titulo" required maxlenght="250">
@@ -76,18 +76,18 @@ if (isset($_POST["guardar"])) {
     ?>
     </select>
     <label for="texto_noticia">Texto</label>
-    <textarea name="texto_noticia" id="" cols="45" rows="12" required></textarea>
-    <label for="url_img">Imagen</label>
+    <textarea name="texto_noticia" id="texto_noticia" cols="45" rows="12" ></textarea>
+    <label for="imagen">Imagen</label>
     <input type="file" name="imagen" id="imagen" accept="image/png, image/jpeg">
     <input type="submit" name="guardar" value="Guardar Noticia">
-    
-    
-
-
 
 </form>
 
 
-
+<script language="JavaScript" type="text/javascript" src="scripts/wysiwyg.js"></script> 
+ <script language="JavaScript" type="text/javascript" src="scripts/wysiwyg-settings.js"></script> 
+ <script  language="JavaScript">
+  WYSIWYG.attach('texto_noticia');
+</script> 
 </body>
 </html>

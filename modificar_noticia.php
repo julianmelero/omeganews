@@ -168,7 +168,7 @@ while ($palabras = $palabras_publicacion[0]->fetch()) {
     ?>
     </select>
     <label for="texto_noticia">Texto</label>
-    <textarea name="texto_noticia" id="" cols="45" rows="12" required><?php echo $texto_noticia; ?></textarea>
+    <textarea name="texto_noticia" id="texto_noticia" cols="45" rows="12" required><?php echo $texto_noticia; ?></textarea>
     <label for="url_img">Imagen</label>
     <input type="file" name="imagen" id="imagen" accept="image/png, image/jpeg">
     <img src="<?php echo $dir; ?>" alt="" width='250px' heigth='200px'>
@@ -177,6 +177,10 @@ while ($palabras = $palabras_publicacion[0]->fetch()) {
         
 </form>
 
-
+ <script language="JavaScript" type="text/javascript" src="scripts/wysiwyg.js"></script> 
+ <script language="JavaScript" type="text/javascript" src="scripts/wysiwyg-settings.js"></script> 
+ <script  language="JavaScript">
+  WYSIWYG.attach('texto_noticia');
+</script> 
 </body>
 </html>
