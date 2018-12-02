@@ -86,10 +86,5 @@ if (isset($_POST["guardar"])) {
 <script src="http://js.nicedit.com/nicEdit-latest.js" type="text/javascript"></script>
 <script type="text/javascript">bkLib.onDomLoaded(nicEditors.allTextAreas);</script>
 						
-<!--<script language="JavaScript" type="text/javascript" src="scripts/wysiwyg.js"></script> 
- <script language="JavaScript" type="text/javascript" src="scripts/wysiwyg-settings.js"></script> 
- <script  language="JavaScript">
-  WYSIWYG.attach('texto_noticia');
-</script> -->
 </body>
 </html>
