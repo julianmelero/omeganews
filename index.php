@@ -19,6 +19,8 @@ Copyright (C) 2018  Julián Melero Hidalgo, Araceli Garrido García, Alfredo Ole
     <?php
       // Primero mostramos las noticias que faltan por revisar
       require_once "class/publicacion.php";
+      require_once "class/usuarios.php";
+      $usuarios = new usuario();
       $publicaciones = new publicacion();
       if (isset($_SESSION["usuario"])) {              
         if ($_SESSION["tipo_usuario"]== "Administrador" or $_SESSION["tipo_usuario"]== "Editor") {
@@ -28,6 +30,10 @@ Copyright (C) 2018  Julián Melero Hidalgo, Araceli Garrido García, Alfredo Ole
         while ($datos = $no_aprobadas[0]->fetch()) {
           $dir = "img_noticias/".$datos["id"]."/".$datos["url_img"];
           echo "<form action='modificar_noticia.php' method='post'>";
+          $d_usuario = $usuarios->get_usuario($datos["id_usuario"]);
+          while ($usuario = $d_usuario[0]->fetch()) {
+            echo "Autor: ". $usuario["nombre"]." ".$usuario["ape1"]." ".$usuario["ape2"];
+          }      
           echo "<input type='hidden' name='id' value='".$datos["id"]."' id='id'></input> ";
           echo "<h2>".$datos["titulo"]."</h2>";
           echo "<img src='".$dir."'  width='250px' heigth='200px'>";
@@ -43,6 +49,8 @@ Copyright (C) 2018  Julián Melero Hidalgo, Araceli Garrido García, Alfredo Ole
         } 
       }
     }
+
+    // Las noticias
       $aprobadas = $publicaciones->get_publicaciones();
       
         echo "<h1>Noticias</h1>";
@@ -50,6 +58,10 @@ Copyright (C) 2018  Julián Melero Hidalgo, Araceli Garrido García, Alfredo Ole
           $dir = "img_noticias/".$datos["id"]."/".$datos["url_img"];
           echo "<form action='noticia.php' method='post'>";
           echo "<input type='hidden' name='id' value='".$datos["id"]."' id='id'></input> ";
+          $d_usuario = $usuarios->get_usuario($datos["id_usuario"]);
+          while ($usuario = $d_usuario[0]->fetch()) {
+            echo "Autor: ". $usuario["nombre"]." ".$usuario["ape1"]." ".$usuario["ape2"];
+          }        
           echo "<h2>".$datos["titulo"]."</h2>";
           echo "<h3>".$datos["subtitulo"]."</h3>";
           echo "<img src='".$dir."'  width='250px' heigth='200px'>";

@@ -146,6 +146,14 @@ while ($palabras = $palabras_publicacion[0]->fetch()) {
 <form  enctype="multipart/form-data" action="" method="post">
     <input type="hidden" name="id" id='id' value="<?php echo $id; ?>">  
     <input type="hidden" name="id_usuario" id='id_usuario' value="<?php echo $id_usuario; ?>">
+    <label for="autor">Autor</label>
+    <?php
+     $d_usuario = $usuarios->get_usuario($id_usuario);
+     while ($usuario = $d_usuario[0]->fetch()) {?>
+       <input type="text" maxlength="250" name="autor" readonly maxlenght="250" value="<?php echo $usuario["nombre"]." ".$usuario["ape1"]." ".$usuario["ape2"]; ?>">
+     <?php      
+     }
+    ?>
     <label for="titulo">Título</label>
     <input type="text" maxlength="250" name="titulo" required maxlenght="250" value="<?php echo $titulo; ?>">
     <label for="subtitulo">Subtítulo</label>
