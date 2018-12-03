@@ -224,3 +224,36 @@ COMMIT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+
+--
+-- Volcado de datos para la tabla `secciones`
+--
+
+INSERT INTO `secciones` (`id`, `nombre`) VALUES
+(1, 'General'),
+(2, 'Deportes'),
+(3, 'Otros');
+COMMIT;
+
+--
+-- Base de datos: `omeganews`
+--
+
+--
+-- Volcado de datos para la tabla `tipos_usuario`
+--
+
+INSERT INTO `tipos_usuario` (`id`, `nombre_tipo`) VALUES
+(1, 'Periodista'),
+(2, 'Editor'),
+(3, 'Administrador');
+COMMIT;
+
+
+--
+-- Volcado de datos para la tabla `usuarios`
+--
+
+INSERT INTO `usuarios` (`id`, `nombre`, `usuario`, `pass`, `ape1`, `ape2`, `id_tipo_usuario`, `email`, `telefono`) VALUES
+(8, 'Administrador', 'Admin', 'df615b7ffdea3c81583e8636c91ce4ae4f853718', 'De', 'Omega', 3, 'admin@omeganews.com', '12345678');
+COMMIT;
