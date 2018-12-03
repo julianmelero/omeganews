@@ -91,6 +91,11 @@ body{
     
     
 }
+h1{
+    color: black;
+	margin: 20px 0 14px 0;
+    color: #77b74e;
+}
 /***Miembros equipo*****/
 
 .miembros {
@@ -216,5 +221,20 @@ input[type=submit]:hover {
 a:hover{
    color: #77b74e;  
 }
+#seccion select [name="id_seccion"]{
+    position: relative;
+    font-family:'Brandon_bld';
+    
+    
+}
+#seccion {
+  background-color: #77b74e;
+  color:white;
+  width: auto;
+  border:1px solid #77b74e;
 
+  width: 50%;
+  border-radius: 50px;
+    
+}
 
