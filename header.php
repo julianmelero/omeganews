@@ -12,7 +12,7 @@ require_once "./class/usuarios.php";
 
  <header class="nav-header">
        <div class="center-contents">
-          <a class="logo" href="index.php" title=""><img src="./sources/img/OmegaNews.jpg" alt=""></a>
+          <a class="logo" href="index.php" title="omeganews"><img src="./sources/img/OmegaNews.jpg" alt=""></a>
          <div class="center-contents">
           <nav class="menu-nav">
             <ul>                  
