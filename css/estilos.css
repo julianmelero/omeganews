@@ -237,4 +237,16 @@ a:hover{
   border-radius: 50px;
     
 }
+#texto_noticia{
+    width:300px;height:80px; border:1px solid #77b74e;
+}
+#imagen {
+  background-color: #77b74e;
+  color:white;
+  width: auto;
+  border:2px solid #77b74e;
+  width: 100%;
+  border-radius: 50px;
+  
+}
 
