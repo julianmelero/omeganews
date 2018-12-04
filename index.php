@@ -64,7 +64,7 @@ Copyright (C) 2018  Julián Melero Hidalgo, Araceli Garrido García, Alfredo Ole
           }        
           echo "<h2>".$datos["titulo"]."</h2>";
           echo "<h3>".$datos["subtitulo"]."</h3>";
-          echo "<img src='".$dir."'  width='250px' heigth='200px'>";
+          echo "<img alt='noticia' src='".$dir."'  width='250px' heigth='200px'>";
           echo "<h4>".date("d-m-Y",strtotime($datos["fecha"]))."</h4>";
           echo substr($datos["texto_noticia"],0,150);
           if (strlen($datos["texto_noticia"])> 150 ) {

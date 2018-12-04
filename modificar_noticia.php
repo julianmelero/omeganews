@@ -179,7 +179,7 @@ while ($palabras = $palabras_publicacion[0]->fetch()) {
     <textarea name="texto_noticia" id="texto_noticia" cols="45" rows="12" required><?php echo $texto_noticia; ?></textarea>
     <label for="url_img">Imagen</label>
     <input type="file" name="imagen" id="imagen" accept="image/png, image/jpeg">
-    <img src="<?php echo $dir; ?>" alt="" width='250px' heigth='200px'>
+    <img src="<?php echo $dir; ?>" alt="noticia" width='250px' heigth='200px'>
     <input type="submit" name="guardar" value="Guardar Noticia">
     <input type="submit" name="aprobar" value="Guardar y Aprobar">
         
