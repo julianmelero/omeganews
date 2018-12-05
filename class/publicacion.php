@@ -47,6 +47,13 @@ class publicacion{
       WHERE id= ?;";      
       return $con->query($sql,array($id));      
     }
+    
+    
+    function tipo_seccion($id){
+       $con= new conexion();
+       $sql= "SELECT * FROM publicaciones WHERE publicaciones.id_seccion= ?;";
+       return $con->query($sql,array($id)); 
+    }
 }
 
 

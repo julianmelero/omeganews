@@ -13,7 +13,28 @@ Copyright (C) 2018  Julián Melero Hidalgo, Araceli Garrido García, Alfredo Ole
     <?php require_once "head.php"; ?>  
   </head>
     <body>
-    <?php require_once "header.php"; ?>
+    <?php require_once "header.php"; 
+        require_once "class/secciones.php";
+        $secciones = new secciones();
+    ?>
+        
+    
+   <!--select para elegir las secciones de noticias-->
+    <form enctype="multipart/form-data" action="publicar_noticias.php" method="post">
+        <select name="id_seccion" id="seccion">
+        <option>Todas</option>
+    <?php  
+    $datos = $secciones->get_secciones();
+   
+    while($seccion = $datos[0]->fetch()){        
+        ?>        
+        <option value="<?php echo $seccion["id"]; ?>" ><?php echo $seccion["nombre"]; ?></option>        
+        <?php
+    }
+
+    ?>
+    </select>
+    </form>
 
 
     <?php
@@ -74,6 +95,10 @@ Copyright (C) 2018  Julián Melero Hidalgo, Araceli Garrido García, Alfredo Ole
           echo "<input type='submit' value='Ver' name='ver'>";
           echo "</form>";
         }
+    
+     
+        
+        
     
       // Aquí ponemos las noticias ya aprobadas, y que pueden ser modificadas sólo por admin y editor
 
