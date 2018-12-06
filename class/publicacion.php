@@ -51,7 +51,7 @@ class publicacion{
     
     function tipo_seccion($id){
        $con= new conexion();
-       $sql= "SELECT * FROM publicaciones WHERE publicaciones.id_seccion= ?;";
+       $sql= "SELECT * FROM publicaciones WHERE publicaciones.id_seccion= ? AND aprobado=1;";
        return $con->query($sql,array($id)); 
     }
 }
