@@ -33,6 +33,6 @@ if(isset($_POST["entrar"])){
     <input type="password" required placeholder="Escriba su contraseña..." name="pwd">
     <input type="submit" name="entrar" value="¡Entrar!">
 </form>
-Si quieres crear noticias con nosotros, <a href="alta_usuario.php"> ¡Regístrate!</a>
+<p>Si quieres crear noticias con nosotros,</p> <a href="alta_usuario.php"> <p>¡Regístrate!</p></a>
 </body>
 </html>
