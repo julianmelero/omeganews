@@ -24,6 +24,9 @@ h1{
     width:250px;
     height:200px;
 }
+p{
+   text-align: center; 
+}
 
 /***************************HEADER*********************************/
   .nav-header{
@@ -177,7 +180,8 @@ input[type=submit]{
     background-color: #decdb1;
     color: white;
     font-size: 20px;
-    padding: 5px 10px;
+    font-size: 17px;
+    padding: 0px 0px;
     margin: 10px 0;
     border: none;
     border-radius: 30px;
@@ -241,6 +245,19 @@ a:hover{
   width: 50%;
   border-radius: 50px;
     
+}
+/***botón de filtrado**/
+button[type=submit]{
+    width: 40%;
+    background-color: #decdb1;
+    color: white;
+    font-size: 17px;
+    padding: 0px 0px;
+    margin: 10px 0;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer; 
+    margin-left: 20px;
 }
 #texto_noticia{
     width:300px;height:80px; border:1px solid #77b74e;
