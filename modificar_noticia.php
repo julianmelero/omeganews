@@ -9,6 +9,9 @@
 </head>
 <body>
 <?php require_once "header.php";
+if(!isset($_SESSION["usuario"])){
+    header('Location: index.php');
+}
 require_once "class/secciones.php";
 require_once "class/usuarios.php";
 require_once "class/palabras_clave.php";
