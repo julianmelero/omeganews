@@ -9,7 +9,7 @@ Copyright (C) 2018  Julián Melero Hidalgo, Araceli Garrido García, Alfredo Ole
 <html lang="es">
   <head>
     <meta charset="utf-8">
-    <title>OMEGA NEWS</title>
+    <title>Noticias OMEGA</title>
     <?php require_once "head.php"; ?>  
   </head>
     <body>
