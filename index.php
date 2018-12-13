@@ -63,7 +63,7 @@ Copyright (C) 2018  Julián Melero Hidalgo, Araceli Garrido García, Alfredo Ole
             while($seccion = $datos[0]->fetch()){ ?>
 <option value="<?php echo $seccion["id"]; ?>"><?php echo $seccion["nombre"]; ?></option>
             <?php } ?>
-          </select>
+</select>
           <button type="submit">Filtrar</button>
         </form>
     </div>    
