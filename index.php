@@ -55,17 +55,17 @@ Copyright (C) 2018  Julián Melero Hidalgo, Araceli Garrido García, Alfredo Ole
     <!--select para elegir las secciones de noticias-->
     <div name="filtros">
         <form enctype="multipart/form-data" action="index.php" method="post">
-        <label for="seccion"></label>
-        <select name="filtro" id="seccion">
-          <option value="Todas">Todas</option>
-          <?php  
-          $datos = $secciones->get_secciones();
-          while($seccion = $datos[0]->fetch()){?>        
-          <option value="<?php echo $seccion["id"]; ?>"><?php echo $seccion["nombre"]; ?></option>
-          <?php } ?>
-        </select>
-        <button type="submit">Filtrar</button>
-       </form>
+          <label for="seccion"></label>
+          <select name="filtro" id="seccion">
+            <option value="Todas">Todas</option>
+            <?php
+            $datos = $secciones->get_secciones();
+            while($seccion = $datos[0]->fetch()){?>
+            <option value="<?php echo $seccion["id"]; ?>"><?php echo $seccion["nombre"]; ?></option>
+            <?php } ?>
+          </select>
+          <button type="submit">Filtrar</button>
+        </form>
     </div>    
     <?php
     if(isset($_POST['filtro'])){
