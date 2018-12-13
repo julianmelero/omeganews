@@ -27,16 +27,16 @@ require_once "./class/usuarios.php";
             $tipo = $usuario->tipo_usuario($_SESSION["usuario"]);
             if ($tipo == "Administrador"){                      
             ?>                    
-            <li><a href="miembros.php">Miembros</a></li>
+          <li><a href="miembros.php">Miembros</a></li>
             <?php } 
             if ($tipo == "Periodista" or $tipo == "Administrador") {                      
-              ?>
-            <li><a href="publicar_noticias.php">Publicar noticia</a></li>
+            ?>
+          <li><a href="publicar_noticias.php">Publicar noticia</a></li>
             <?php
             }
             ?>
-            <li><a href="mis_datos.php"><?php echo $_SESSION["usuario"]; ?> (<?php echo $_SESSION["tipo_usuario"]; ?>) </a></li>
-            <li><a href="cerrar_sesion.php">Cerrar Sesión</a></li>
+          <li><a href="mis_datos.php"><?php echo $_SESSION["usuario"]; ?> (<?php echo $_SESSION["tipo_usuario"]; ?>) </a></li>
+          <li><a href="cerrar_sesion.php">Cerrar Sesión</a></li>
           <?php } ?>
         </ul>
       </nav>
