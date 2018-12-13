@@ -42,5 +42,4 @@ require_once "./class/usuarios.php";
           </nav>
     </div>
   </div>
-         
-      </header>
+</header>
