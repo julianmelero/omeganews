@@ -6,7 +6,7 @@ Copyright (C) 2018  Julián Melero Hidalgo, Araceli Garrido García, Alfredo Ole
 
 ?>
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8">
     <title>Noticias OMEGA</title>
