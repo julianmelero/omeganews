@@ -57,17 +57,15 @@ Copyright (C) 2018  Julián Melero Hidalgo, Araceli Garrido García, Alfredo Ole
         <form enctype="multipart/form-data" action="index.php" method="post">
         <label for="seccion"></label>
         <select name="filtro" id="seccion">
-                <option value="Todas">Todas</option>
-             <?php  
-            $datos = $secciones->get_secciones();
-
-            while($seccion = $datos[0]->fetch()){        
-                ?>        
-                <option value="<?php echo $seccion["id"]; ?>" ><?php echo $seccion["nombre"]; ?></option>        
-                <?php
-            }
-
-            ?>
+          <option value="Todas">Todas</option>
+          <?php  
+          $datos = $secciones->get_secciones();
+          while($seccion = $datos[0]->fetch()){        
+          ?>        
+          <option value="<?php echo $seccion["id"]; ?>" ><?php echo $seccion["nombre"]; ?></option>
+          <?php
+          }
+          ?>
         </select>
             <button type="submit">Filtrar</button>
 
