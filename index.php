@@ -55,6 +55,7 @@ Copyright (C) 2018  Julián Melero Hidalgo, Araceli Garrido García, Alfredo Ole
     <!--select para elegir las secciones de noticias-->
     <div name="filtros">
         <form enctype="multipart/form-data" action="index.php" method="post">
+        <label for="seccion"></label>
         <select name="filtro" id="seccion">
                 <option value="Todas">Todas</option>
              <?php  
