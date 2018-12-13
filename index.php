@@ -79,23 +79,27 @@ Copyright (C) 2018  Julián Melero Hidalgo, Araceli Garrido García, Alfredo Ole
         echo "<h1>Noticias</h1>";
         while ($datos = $aprobadas[0]->fetch()) {
           $dir = "img_noticias/".$datos["id"]."/".$datos["url_img"];
-          echo "<form action='noticia.php' method='post'>";
-          echo "<input type='hidden' name='id' value='".$datos["id"]."' id='id'>";
+          ?>
+          <form action='noticia.php' method='post'>
+          <input type='hidden' name='id' value='<?php echo $datos["id"];?>' id='id'>
+          <?php
           $d_usuario = $usuarios->get_usuario($datos["id_usuario"]);
           while ($usuario = $d_usuario[0]->fetch()) {
             echo "Autor: ". $usuario["nombre"]." ".$usuario["ape1"]." ".$usuario["ape2"];
-        }
-          echo "<h2>".$datos["titulo"]."</h2>";
-          echo "<h3>".$datos["subtitulo"]."</h3>";
-          echo "<img class='imagen' alt='noticia' src='".$dir."'>";
-          echo "<h4>".date("d-m-Y",strtotime($datos["fecha"]))."</h4>";
-          echo substr($datos["texto_noticia"],0,150);
+        }?>
+          <h2><?php echo $datos["titulo"];?></h2>
+          <h3><?php echo $datos["subtitulo"]; ?></h3>;
+          <img class='imagen' alt='noticia' src='<?php echo $dir;?>'>";
+          <h4><?php echo date("d-m-Y",strtotime($datos["fecha"])); ?></h4>;
+          <?php echo substr($datos["texto_noticia"],0,150);
           if (strlen($datos["texto_noticia"])> 150 ) {
             echo "...";
           } 
           echo "<br>";         
-          echo "<input type='submit' value='Ver' name='ver'>";
-          echo "</form>";
+          ?>
+          <input type='submit' value='Ver' name='ver'>
+          </form>
+          <?php
         }
     
      
