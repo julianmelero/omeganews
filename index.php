@@ -13,8 +13,9 @@ Copyright (C) 2018  Julián Melero Hidalgo, Araceli Garrido García, Alfredo Ole
     <?php require_once "head.php"; ?>  
   </head>
   <body>
-  <article>
+  
     <?php require_once "header.php"; 
+    echo "<article>";
         require_once "class/secciones.php";
         $secciones = new secciones();
         
