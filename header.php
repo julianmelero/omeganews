@@ -10,10 +10,10 @@ require_once "./class/usuarios.php";
 
 ?>
 
- <header class="nav-header">
-       <div class="center-contents">
-          <div class="logo"> <img src="./sources/img/OmegaNews.jpg" alt="omega"></div>
-         <div class="center-contents">
+<header class="nav-header">
+  <div class="center-contents">
+    <div class="logo"> <img src="./sources/img/OmegaNews.jpg" alt="omega"></div>
+    <div class="center-contents">
           <nav class="menu-nav">
             <ul>                  
                     <li><a href="index.php">Noticias</a></li>
@@ -40,7 +40,7 @@ require_once "./class/usuarios.php";
                     <?php } ?>
             </ul>
           </nav>
-        </div>
-      </div>
+    </div>
+  </div>
          
       </header>
