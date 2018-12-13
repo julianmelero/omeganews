@@ -105,7 +105,7 @@ Copyright (C) 2018  Julián Melero Hidalgo, Araceli Garrido García, Alfredo Ole
      
         break;
         default:
-        echo "<div>";
+        
          //Noticias filtradas por sección  
             $filtradas = $publicaciones->tipo_seccion($_POST['filtro']);
       
@@ -158,8 +158,7 @@ Copyright (C) 2018  Julián Melero Hidalgo, Araceli Garrido García, Alfredo Ole
           echo "<input type='submit' value='Ver' name='ver'>";
           echo "</form>";
         }
-        }
-        echo "</div>";        
+        }        
         ?>       
 
     <?php
