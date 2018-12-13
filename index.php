@@ -12,7 +12,7 @@ Copyright (C) 2018  Julián Melero Hidalgo, Araceli Garrido García, Alfredo Ole
     <title>Noticias OMEGA</title>
     <?php require_once "head.php"; ?>  
   </head>
-    <body>
+  <body>
     <?php require_once "header.php"; 
         require_once "class/secciones.php";
         $secciones = new secciones();
