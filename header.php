@@ -35,7 +35,7 @@ require_once "./class/usuarios.php";
             <?php
             }
             ?>
-              <li><a href="mis_datos.php"><?php echo $_SESSION["usuario"]; ?> (<?php echo $_SESSION["tipo_usuario"]; ?>) </a></li>                        
+              <li><a href="mis_datos.php"><?php echo $_SESSION["usuario"]; ?> (<?php echo $_SESSION["tipo_usuario"]; ?>) </a></li>
               <li><a href="cerrar_sesion.php">Cerrar Sesión</a></li>
           <?php } ?>
         </ul>
