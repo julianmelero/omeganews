@@ -34,7 +34,7 @@ Copyright (C) 2018  Julián Melero Hidalgo, Araceli Garrido García, Alfredo Ole
           while ($usuario = $d_usuario[0]->fetch()) {
             echo "Autor: ". $usuario["nombre"]." ".$usuario["ape1"]." ".$usuario["ape2"];
           }      
-          echo "<input type='hidden' name='id' value='".$datos["id"]."' id='id'></input> ";
+          echo "<input type='hidden' name='id' value='".$datos["id"]."' id='id'>";
           echo "<h2>".$datos["titulo"]."</h2>";
           echo "<img src='".$dir."'  class='imagen' alr='imagen'>";
           echo "<h3>".$datos["subtitulo"]."</h3>";
