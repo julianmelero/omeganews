@@ -76,7 +76,7 @@ Copyright (C) 2018  Julián Melero Hidalgo, Araceli Garrido García, Alfredo Ole
      // Las noticias aprobadas sin filtrar
       $aprobadas = $publicaciones->get_publicaciones();
       
-        echo "<div>Noticias";
+        echo "<div><h1>Noticias</h1>";
         while ($datos = $aprobadas[0]->fetch()) {
           $dir = "img_noticias/".$datos["id"]."/".$datos["url_img"];
           echo "<form action='noticia.php' method='post'>";
@@ -108,7 +108,7 @@ Copyright (C) 2018  Julián Melero Hidalgo, Araceli Garrido García, Alfredo Ole
         echo "<h1>Noticias</h1>";
         while ($datos = $filtradas[0]->fetch()) {
           $dir = "img_noticias/".$datos["id"]."/".$datos["url_img"];
-          echo "<form action='noticia.php' method='post'>";
+          echo "<div><form action='noticia.php' method='post'>";
           echo "<input type='hidden' name='id' value='".$datos["id"]."' id='id'>";
           $d_usuario = $usuarios->get_usuario($datos["id_usuario"]);
           while ($usuario = $d_usuario[0]->fetch()) {
@@ -124,7 +124,7 @@ Copyright (C) 2018  Julián Melero Hidalgo, Araceli Garrido García, Alfredo Ole
           } 
           echo "<br>";         
           echo "<input type='submit' value='Ver' name='ver'>";
-          echo "</form>";
+          echo "</form></div>";
         }
         break;
         }
