@@ -31,7 +31,7 @@ require_once "./class/usuarios.php";
             <?php } 
             if ($tipo == "Periodista" or $tipo == "Administrador") {                      
               ?>
-              <li><a href="publicar_noticias.php">Publicar noticia</a></li>                                                
+              <li><a href="publicar_noticias.php">Publicar noticia</a></li>
             <?php
             }
             ?>
