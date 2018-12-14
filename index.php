@@ -90,9 +90,9 @@ Copyright (C) 2018  Julián Melero Hidalgo, Araceli Garrido García, Alfredo Ole
             echo "Autor: ". $usuario["nombre"]." ".$usuario["ape1"]." ".$usuario["ape2"];
         }?>
           <h2><?php echo $datos["titulo"];?></h2>
-          <h3><?php echo $datos["subtitulo"]; ?></h3>;
-          <img class='imagen' alt='noticia' src='<?php echo $dir;?>'>";
-          <h4><?php echo date("d-m-Y",strtotime($datos["fecha"])); ?></h4>;
+          <h3><?php echo $datos["subtitulo"]; ?></h3>
+          <img class='imagen' alt='noticia' src='<?php echo $dir;?>'>
+          <h4><?php echo date("d-m-Y",strtotime($datos["fecha"])); ?></h4>
           <?php echo substr($datos["texto_noticia"],0,150);
           if (strlen($datos["texto_noticia"])> 150 ) {
             echo "...";
