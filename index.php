@@ -1,3 +1,10 @@
+<?php
+/*
+Copyright (C) 2018  Julián Melero Hidalgo, Araceli Garrido García, Alfredo Oleagagoitia Álvarez
+*/
+
+
+?>
 <!DOCTYPE html>
 <html lang="es" xml:lang='es'>
   <head>
@@ -29,7 +36,7 @@
           while ($usuario = $d_usuario[0]->fetch()) {
             echo "Autor: ". $usuario["nombre"]." ".$usuario["ape1"]." ".$usuario["ape2"];
           }      
-          echo "<input type='hidden' name='id' value='".$datos["id"]."' id='id'>";
+          echo "<input required type='hidden' name='id' value='".$datos["id"]."' id='id'>";
           echo "<h2>".$datos["titulo"]."</h2>";
           echo "<img src='".$dir."'  class='imagen' alr='imagen'  longdesc='http://www.omega.melerohidalgo.es'>";
           echo "<h3>".$datos["subtitulo"]."</h3>";
