@@ -1,10 +1,3 @@
-<?php
-/*
-Copyright (C) 2018  Julián Melero Hidalgo, Araceli Garrido García, Alfredo Oleagagoitia Álvarez
-*/
-
-
-?>
 <!DOCTYPE html>
 <html lang="es" xml:lang='es'>
   <head>
