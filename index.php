@@ -6,7 +6,7 @@ Copyright (C) 2018  Julián Melero Hidalgo, Araceli Garrido García, Alfredo Ole
 
 ?>
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" xml:lang='es'>
   <head>
     <meta charset="utf-8">
     <title>Noticias OMEGA</title>
@@ -36,7 +36,7 @@ Copyright (C) 2018  Julián Melero Hidalgo, Araceli Garrido García, Alfredo Ole
           while ($usuario = $d_usuario[0]->fetch()) {
             echo "Autor: ". $usuario["nombre"]." ".$usuario["ape1"]." ".$usuario["ape2"];
           }      
-          echo "<input type='hidden' name='id' value='".$datos["id"]."' id='id'>";
+          echo "<input reuired type='hidden' name='id' value='".$datos["id"]."' id='id'>";
           echo "<h2>".$datos["titulo"]."</h2>";
           echo "<img src='".$dir."'  class='imagen' alt='".$datos["titulo"]."'  longdesc='http://www.omega.melerohidalgo.es'>";
           echo "<h3>".$datos["subtitulo"]."</h3>";
@@ -83,7 +83,7 @@ Copyright (C) 2018  Julián Melero Hidalgo, Araceli Garrido García, Alfredo Ole
           $dir = "img_noticias/".$datos["id"]."/".$datos["url_img"];
           ?>
           <form action='noticia.php' method='post'>
-          <input type='hidden' name='id' value='<?php echo $datos["id"];?>' id='id'>
+          <input required type='hidden' name='id' value='<?php echo $datos["id"];?>' id='id'>
           <?php
           $d_usuario = $usuarios->get_usuario($datos["id_usuario"]);
           while ($usuario = $d_usuario[0]->fetch()) {
@@ -115,7 +115,7 @@ Copyright (C) 2018  Julián Melero Hidalgo, Araceli Garrido García, Alfredo Ole
         while ($datos = $filtradas[0]->fetch()) {
           $dir = "img_noticias/".$datos["id"]."/".$datos["url_img"];
           echo "<form action='noticia.php' method='post'>";
-          echo "<input type='hidden' name='id' value='".$datos["id"]."' id='id'>";
+          echo "<input required type='hidden' name='id' value='".$datos["id"]."' id='id'>";
           $d_usuario = $usuarios->get_usuario($datos["id_usuario"]);
           while ($usuario = $d_usuario[0]->fetch()) {
             echo "Autor: ". $usuario["nombre"]." ".$usuario["ape1"]." ".$usuario["ape2"];
@@ -143,7 +143,7 @@ Copyright (C) 2018  Julián Melero Hidalgo, Araceli Garrido García, Alfredo Ole
         while ($datos = $aprobadas[0]->fetch()) {
           $dir = "img_noticias/".$datos["id"]."/".$datos["url_img"];
           echo "<form action='noticia.php' method='post'>";
-          echo "<input type='hidden' name='id' value='".$datos["id"]."' id='id'>";
+          echo "<input required type='hidden' name='id' value='".$datos["id"]."' id='id'>";
           $d_usuario = $usuarios->get_usuario($datos["id_usuario"]);
           while ($usuario = $d_usuario[0]->fetch()) {
             echo "Autor: ". $usuario["nombre"]." ".$usuario["ape1"]." ".$usuario["ape2"];
