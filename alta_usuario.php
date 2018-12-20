@@ -24,23 +24,24 @@ if(isset($_POST["enviar"])){
   
   <body>  
   <?php require_once "header.php"; ?>
+  <h1>Alta de Usuario</h1>
     <form name="alta" id="alta" class="" action="" method="post" onsubmit="return comprobar();">
-      <label for="nombre">Usuario*</label>
-      <input type="text" required name="usuario" value='<?php if(isset($_POST["usuario"])){ echo $_POST["usuario"]; } ?>'>
+      <label for="usuario">Usuario*</label>
+      <input type="text" required name="usuario" id="usuario" value='<?php if(isset($_POST["usuario"])){ echo $_POST["usuario"]; } ?>'>
       <label for="pass">Contraseña*</label>
-      <input type="password" required name="pass" id="pass" >
+      <input type="password" required name="pass" id="pass" id="pass" >
       <label for="pass2">Repita Contraseña*</label>
-      <input type="password" required name="pass2" id="pass2" >
+      <input type="password" required name="pass2" id="pass2" id="pass2" >
       <label for="nombre">Nombre*</label>
-      <input type="text" required name="nombre" value='<?php  if(isset($_POST["nombre"])){ echo $_POST["nombre"]; } ?>' >
+      <input type="text" required name="nombre" id="nombre" value='<?php  if(isset($_POST["nombre"])){ echo $_POST["nombre"]; } ?>' >
       <label for="apellido1">Primer Apellido*</label>
-      <input type="text" required name="apellido1" value='<?php  if(isset($_POST["apellido1"])){ echo $_POST["apellido1"]; } ?>' >
+      <input type="text" required name="apellido1" id="apellido1" value='<?php  if(isset($_POST["apellido1"])){ echo $_POST["apellido1"]; } ?>' >
       <label for="apellido2">Segundo Apellido*</label>
-      <input type="text" required name="apellido2" value='<?php if(isset($_POST["apellido2"])){ echo $_POST["apellido2"]; } ?>'>
+      <input type="text" required name="apellido2" id="apellido2" value='<?php if(isset($_POST["apellido2"])){ echo $_POST["apellido2"]; } ?>'>
       <label for="email">Email*</label>
-      <input type="email" required name="email" value='<?php if(isset($_POST["email"])){ echo $_POST["email"]; } ?>'>
+      <input type="email" required name="email" id="email" value='<?php if(isset($_POST["email"])){ echo $_POST["email"]; } ?>'>
       <label for="telefono">Teléfono*</label>
-      <input type="text" required name="telefono" value='<?php if(isset($_POST["telefono"])){ echo $_POST["telefono"]; } ?>'>
+      <input type="text" required name="telefono" id="telefono" value='<?php if(isset($_POST["telefono"])){ echo $_POST["telefono"]; } ?>'>
       <input type="submit" name='enviar' value="Registrarme">
     </form>
     <script>

@@ -38,7 +38,7 @@ Copyright (C) 2018  Julián Melero Hidalgo, Araceli Garrido García, Alfredo Ole
           }      
           echo "<input type='hidden' name='id' value='".$datos["id"]."' id='id'>";
           echo "<h2>".$datos["titulo"]."</h2>";
-          echo "<img src='".$dir."'  class='imagen' alr='imagen'  longdesc='http://www.omega.melerohidalgo.es'>";
+          echo "<img src='".$dir."'  class='imagen' alt='".$datos["titulo"]."'  longdesc='http://www.omega.melerohidalgo.es'>";
           echo "<h3>".$datos["subtitulo"]."</h3>";
           echo "<h4>".date("d-m-Y",strtotime($datos["fecha"]))."</h4>";
           echo substr($datos["texto_noticia"],0,150);
@@ -57,7 +57,7 @@ Copyright (C) 2018  Julián Melero Hidalgo, Araceli Garrido García, Alfredo Ole
     <!--select para elegir las secciones de noticias-->
     <div id="filtros">
         <form action="index.php" method="post">
-          <label for="seccion"></label>
+          <label for="seccion">Seleccione el tipo de noticia</label>
           <select name="filtro" id="seccion">
             <option value="Todas">Todas</option>
             <?php
@@ -91,7 +91,7 @@ Copyright (C) 2018  Julián Melero Hidalgo, Araceli Garrido García, Alfredo Ole
         }?>
           <h2><?php echo $datos["titulo"];?></h2>
           <h3><?php echo $datos["subtitulo"]; ?></h3>
-          <img class='imagen' alt='noticia' src='<?php echo $dir;?>'>
+          <img class='imagen' alt='noticia <?php echo $datos["titulo"]; ?>' src='<?php echo $dir;?>'>
           <h4><?php echo date("d-m-Y",strtotime($datos["fecha"])); ?></h4>
           <?php echo substr($datos["texto_noticia"],0,150);
           if (strlen($datos["texto_noticia"])> 150 ) {

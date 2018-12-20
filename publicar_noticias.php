@@ -56,15 +56,15 @@ if (isset($_POST["guardar"])) {
 ?> 
 <h1>Nueva Noticia</h1>
 <form enctype="multipart/form-data" action="publicar_noticias.php" method="post">
-    <input type="hidden" name="id_usuario" value='<?php echo $id_usuario; ?>'>
+    <input type="hidden" name="id_usuario" id="id_usuario" value='<?php echo $id_usuario; ?>'>
     <label for="titulo">Título</label>
-    <input type="text" maxlength="250" name="titulo" required maxlenght="250">
+    <input type="text" maxlength="250" name="titulo" id="titulo" required maxlenght="250">
     <label for="subtitulo">Subtítulo</label>
-    <input type="text" maxlength="250" name="subtitulo" required maxlenght="250">
+    <input type="text" maxlength="250" name="subtitulo" id="subtitulo" required maxlenght="250">
     <label for="fecha">Fecha</label>
-    <input type="date" name="fecha" value="<?php echo $hoy; ?>" required>
+    <input type="date" name="fecha" id="fecha" value="<?php echo $hoy; ?>" required>
     <label for="palabra_clave">Palabras Clave (searado por comas)</label>
-    <input type="text" maxlength="250" name="palabra_clave" required maxlenght="250">
+    <input type="text" maxlength="250" name="palabra_clave" id="palabra_clave" required maxlenght="250">
     <label for="seccion">Sección</label>
     <select name="id_seccion" id="seccion">
     <?php

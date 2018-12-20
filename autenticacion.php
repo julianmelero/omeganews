@@ -26,11 +26,12 @@ if(isset($_POST["entrar"])){
  
 <body>
 <?php require_once "header.php"; ?>
+<h1>Autenticación</h1>
 <form action="autenticacion.php" method="post">
     <label for="usuario">Usuario</label>
-    <input type="text" maxlength='30' required placeholder="Usuario..." autofocus name="usuario">
+    <input type="text" maxlength='30' required placeholder="Usuario..." autofocus name="usuario" id="usuario">
     <label for="pwd">Contraseña</label>
-    <input type="password" required placeholder="Escriba su contraseña..." name="pwd">
+    <input type="password" required placeholder="Escriba su contraseña..." name="pwd" id="pwd">
     <input type="submit" name="entrar" value="¡Entrar!">
 </form>
 <p>Si quieres crear noticias con nosotros,</p> <a href="alta_usuario.php"> <p>¡Regístrate!</p></a>
