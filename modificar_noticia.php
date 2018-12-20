@@ -153,18 +153,18 @@ while ($palabras = $palabras_publicacion[0]->fetch()) {
     <?php
      $d_usuario = $usuarios->get_usuario($id_usuario);
      while ($usuario = $d_usuario[0]->fetch()) {?>
-       <input type="text" maxlength="250" name="autor" readonly maxlenght="250" value="<?php echo $usuario["nombre"]." ".$usuario["ape1"]." ".$usuario["ape2"]; ?>">
+       <input type="text" maxlength="250" id="autor" name="autor" readonly maxlenght="250" value="<?php echo $usuario["nombre"]." ".$usuario["ape1"]." ".$usuario["ape2"]; ?>">
      <?php      
      }
     ?>
     <label for="titulo">Título</label>
-    <input type="text" maxlength="250" name="titulo" required maxlenght="250" value="<?php echo $titulo; ?>">
+    <input type="text" maxlength="250" name="titulo" id="titulo" required maxlenght="250" value="<?php echo $titulo; ?>">
     <label for="subtitulo">Subtítulo</label>
-    <input type="text" maxlength="250" name="subtitulo" required maxlenght="250" value="<?php echo $subtitulo; ?>">
+    <input type="text" maxlength="250" name="subtitulo" id="subtitulo" required maxlenght="250" value="<?php echo $subtitulo; ?>">
     <label for="fecha">Fecha</label>
-    <input type="date" name="fecha" value="<?php echo $fecha; ?>" required>
+    <input type="date" name="fecha" id="fecha" value="<?php echo $fecha; ?>" required>
     <label for="palabra_clave">Palabras Clave (searado por comas)</label>
-    <input type="text" maxlength="250" name="palabra_clave" required maxlenght="250" value="<?php echo $palabra; ?>" >
+    <input type="text" maxlength="250" id="palabra_clave" name="palabra_clave" required maxlenght="250" value="<?php echo $palabra; ?>" >
     <label for="seccion">Sección</label>
     <select name="id_seccion" id="seccion">
     <?php
@@ -181,7 +181,7 @@ while ($palabras = $palabras_publicacion[0]->fetch()) {
     <label for="texto_noticia">Texto</label>
     <textarea name="texto_noticia" id="texto_noticia" cols="45" rows="12" required><?php echo $texto_noticia; ?></textarea>
     <label for="url_img">Imagen</label>
-    <input type="file" name="imagen" id="imagen" accept="image/png, image/jpeg">
+    <input type="file" id="url_img" name="imagen" id="imagen" accept="image/png, image/jpeg">
     <img src="<?php echo $dir; ?>" alt="noticia" width='250px' heigth='200px'>
     <input type="submit" name="guardar" value="Guardar Noticia">
     <input type="submit" name="aprobar" value="Guardar y Aprobar">
