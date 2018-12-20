@@ -49,18 +49,18 @@ Aquí puedes modificar tus datos personales.
 <br>
 <form name="alta" class="" action="" method="post" onsubmit="return comprobar();">
         <input type="hidden" name="id" value='<?php echo $id; ?>'>
-      <label for="nombre">Usuario*</label>
-      <input type="text" required name="usuario" value='<?php echo $usuario; ?>'>      
+      <label for="usuario">Usuario*</label>
+      <input type="text" required name="usuario" id="usuario" value='<?php echo $usuario; ?>'>      
       <label for="nombre">Nombre*</label>
-      <input type="text" required name="nombre" value='<?php  echo $nombre; ?>' >
+      <input type="text" required name="nombre" id="nombre" value='<?php  echo $nombre; ?>' >
       <label for="apellido1">Primer Apellido*</label>
-      <input type="text" required name="apellido1" value='<?php echo $apellido1; ?>' >
+      <input type="text" required name="apellido1" id="apellido1" value='<?php echo $apellido1; ?>' >
       <label for="apellido2">Segundo Apellido*</label>
-      <input type="text" required name="apellido2" value='<?php echo $apellido2; ?>'>
+      <input type="text" required name="apellido2" id="apellido2" value='<?php echo $apellido2; ?>'>
       <label for="email">Email*</label>
-      <input type="email" required name="email" value='<?php echo $email; ?>'>
+      <input type="email" required name="email" id="email" value='<?php echo $email; ?>'>
       <label for="telefono">Teléfono*</label>
-      <input type="text" required name="telefono" value='<?php echo $telefono; ?>'>
+      <input type="text" required name="telefono" id="telefono" value='<?php echo $telefono; ?>'>
       <input type="submit" name='enviar' value="Guardar cambios">
     </form>
 
